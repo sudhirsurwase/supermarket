@@ -1,0 +1,40 @@
+// =============================================================================
+// PREVIEW CART (CSS)
+// =============================================================================
+//
+// 1. Override server-generated inline-css
+//
+// -----------------------------------------------------------------------------
+
+.previewCart {
+    @include breakpoint("medium") {
+        .productView {
+            flex-direction: row;
+        }
+    }
+
+    .productView-price {
+        margin-top: 0;
+        font-size: fontSize("larger");
+    }
+
+    .productView-info {
+        margin-bottom: spacing("quarter");
+        border-top: 0;
+    }
+
+    .productView-info-name {
+        margin-top: 0;
+    }
+
+    .productView-info-value {
+        margin-top: 0;
+    }
+    
+}
+
+.previewCartCheckout-additionalCheckoutButtons {
+    .CheckoutButton {
+        margin-top: spacing("half");
+    }
+}

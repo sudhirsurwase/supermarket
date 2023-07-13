@@ -1,0 +1,119 @@
+.emthemesModez-specialProductsTabs {
+	.tabs {
+		border-bottom: 2px solid stencilColor('specialProductsTab-heading-backgroundColor');
+	}
+	.tab-title {
+		font-size: fontSize("small");
+		font-weight: stencilFontWeight("body-font");
+		text-transform: uppercase;
+		color: stencilColor('specialProductsTab-heading-color-inactive');
+		background: stencilColor('specialProductsTab-heading-backgroundColor-inactive');
+		// padding: spacing("quarter") (spacing("half") + spacing("quarter")) (spacing("quarter") - remCalc(2px));
+		padding: spacing("half") (spacing("half") + spacing("quarter"));
+
+		@include breakpoint("medium") {
+			font-size: fontSize("larger");
+		}
+
+		&:hover,
+		&:focus {
+			opacity: 0.8;
+		}
+	}
+
+	.tab {
+		border: 0;
+
+		&.is-active {
+			border: 0;
+			margin-bottom: 0;
+
+			.tab-title {
+				color: stencilColor('specialProductsTab-heading-color');
+				background: stencilColor('specialProductsTab-heading-backgroundColor');
+				font-weight: stencilFontWeight("headings-font");
+			}
+		}
+	}
+
+	.productGrid {
+		margin-bottom: 0;
+	}
+}
+
+
+// Variation 'supermarket1'
+// ----------------------------------------------------------------------------
+// 
+// - For theme Supermarket
+// ---------------------------------------------------------------------------- 
+
+.emthemesModez-specialProductsTabs--supermarket1 {
+	
+	.tabs {
+		display: flex;
+		justify-content: center;
+		background: container("fill", "dark");
+		margin: 0 (-$container-padding);
+		border-bottom: 0;
+
+		@include breakpoint("medium") {
+			background: none;
+			margin: 0;
+			border-bottom: container("border");
+		}
+	}
+
+	.tab-title {
+		color: stencilColor("color-textHeading");
+		background: none;
+		padding: spacing("quarter") 0;
+
+		@include breakpoint("medium") {
+			padding: spacing("half") 0;
+		}
+	}
+
+
+	.tab {
+		border-bottom: 2px solid transparent;
+
+		&.is-active {
+			border-bottom: 2px solid stencilColor('specialProductsTab-heading-backgroundColor');
+
+			.tab-title {
+				color: stencilColor("color-textHeading");
+				background: none;
+			}
+		}
+
+		+ .tab {
+			margin-left: spacing("single") + spacing("half");
+		}
+	}
+
+
+	.tabs-contents {
+		margin: spacing("single") 0 0;
+	}
+
+	.tab-content {
+		padding: 0;
+	}
+
+	.productGrid {
+		margin-bottom: -(spacing("double"));
+		margin-left: 0;
+		margin-right: 0;
+
+		.product {
+			padding-left: 0;
+			padding-right: 0;	
+		}
+	}
+
+	.productCarousel .card, 
+	.productGrid .card {
+		border-color: transparent;
+	}
+}

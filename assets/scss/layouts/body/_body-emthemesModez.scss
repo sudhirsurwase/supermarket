@@ -1,0 +1,94 @@
+.body {
+    margin-bottom: spacing("double");
+    margin-top: 0;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+
+    @include breakpoint("medium") {
+        display: block;
+    }
+}
+
+.page-content {
+    order: 2;
+}
+
+.page-content--centered {
+    @include breakpoint("medium") {
+        width: 60%;
+    }
+}
+
+.page-content--sticky {
+    @include breakpoint("medium") {
+        position: sticky;
+        top: 0;
+    }
+}
+
+.page-sidebar {
+    order: 3;
+
+    @include breakpoint("medium") {
+        width: grid-calc(2, 10);
+        color: $color-textSecondary;
+
+        // when layout is fixed left sidebar
+        .papaSupermarket-layout--left-sidebar & {
+            margin-top: -(spacing("single") + spacing("base") + spacing("half"));
+            z-index: zIndex("low"); // same header's z-index
+        }
+
+        // no pages navigation
+        .papaSupermarket-layout--left-sidebar.papaSupermarket--hideContentNav & {
+            margin-top: 0;
+        }
+
+        // when banner below header show
+        .emthemesModezBannersBlockAfterHeader + .body & {
+            margin-top: 0;
+        }
+
+
+
+
+        + .page-content {
+            width: grid-calc(8, 10);
+        }
+
+        + .page-sidebar + .page-content {
+            width: grid-calc(6, 10);
+        }
+    }
+
+    // fix margin issue of child elements
+    > nav {
+        border-top: 0.5px solid transparent;
+    }
+}
+
+.page-sidebar--top {
+    order: 1;
+}
+
+.page-sidebar--right {
+    float: right;
+    
+    .papaSupermarket-layout--left-sidebar & {
+        margin-top: 0;
+    }
+
+    + .page-content {
+        float: left;
+    }
+}
+
+.page-sidebar--sticky {
+    @include breakpoint("medium") {
+        position: sticky;
+        top: 0;
+    }
+}

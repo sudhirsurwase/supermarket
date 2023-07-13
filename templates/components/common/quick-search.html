@@ -1,0 +1,20 @@
+<div class="emthemesModez-quickSearch{{#if style}} emthemesModez-quickSearch--{{style}}{{/if}}" data-prevent-quick-search-close>
+    {{{ snippet "forms_search"}}}
+    <form class="form" action="{{urls.search}}">
+        <fieldset class="form-fieldset">
+            <div class="form-field">
+                <label class="is-srOnly" for="search_query">{{lang "search.quick_search.input_label"}}</label>
+                <div class="form-prefixPostfix wrap">
+                    <input class="form-input" data-search-quick name="search_query" id="search_query" data-error-message="{{lang 'search.error.empty_field'}}" placeholder="{{lang 'search.quick_search.input_placeholder'}}" autocomplete="off">
+                    <input type="submit" class="button button--primary form-prefixPostfix-button--postfix" value="{{lang 'common.search'}}" />
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    <div class="dropdown dropdown--quickSearch" id="quickSearch" aria-hidden="true" tabindex="-1">
+        <div class="container">
+            <section class="quickSearchResults" data-bind="html: results"></section>
+        </div>
+    </div>
+    <div class="emthemesModez-overlay"></div>
+</div>

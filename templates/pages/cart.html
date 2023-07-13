@@ -1,0 +1,117 @@
+---
+blog:
+    recent_posts:
+        limit: {{theme_settings.footer_show_blog}}
+---
+{{#partial "page"}}
+<div class="page">
+
+    {{#if theme_settings.layout '===' 'left-sidebar'}}
+    <div class="page-sidebar">
+        {{> components/papa-supermarket/home/sidebar}}
+    </div>
+    {{/if}}
+
+    <main class="page-content" data-cart>
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+        {{> components/cart/page-title}}
+
+        <div data-cart-status>
+            {{> components/cart/status-messages}}
+        </div>
+
+        {{#if cart.items.length}}
+            <div class="loadingOverlay"></div>
+
+            <div data-cart-content>
+                {{> components/cart/content}}
+            </div>
+
+            <div data-cart-totals>
+                {{> components/cart/totals}}
+            </div>
+
+            {{#if cart.show_primary_checkout_button}}
+                <div class="cart-actions">
+                    <a class="button button--tertiary" href="{{urls.checkout.single_address}}" title="{{lang 'cart.checkout.title'}}">{{lang 'cart.checkout.button'}}</a>
+                    {{#if cart.show_multiple_address_shipping}}
+                        <a class="checkoutMultiple" href="{{urls.checkout.multiple_address}}">
+                            {{lang 'cart.preview.checkout_multiple'}}
+                        </a>
+                    {{/if}}
+                </div>
+            {{else}}
+                <div class="cart-actions">
+                    <a class="button" href="{{urls.home}}" title="{{lang 'cart.continue_shopping'}}">{{lang 'cart.continue_shopping'}}</a>
+                </div>
+            {{/if}}
+
+            {{#if cart.additional_checkout_buttons}}
+                <div class="cart-additionalCheckoutButtons">
+                    {{#each cart.additional_checkout_buttons}}
+                        {{{this}}}
+                    {{/each}}
+                </div>
+            {{/if}}
+            <!-- Zip widget -->
+            <div class="ziped">
+  
+            <div class="zip-container">
+              <div class="small-zip-img">
+               
+               
+               
+               <!-- PayPal Logo --><table border="0" cellpadding="10" cellspacing="0" align="center"><tr><td align="center"></td></tr><tr><td align="center"><a href="https://www.paypal.com/webapps/mpp/paypal-popup" title="How PayPal Works" onclick="javascript:window.open('https://www.paypal.com/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;"><img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" border="0" alt="PayPal Logo"></a></td></tr></table><!-- PayPal Logo -->
+
+               
+               
+               
+              </div>
+              <div class="ziptext-box">
+                            <div class="ziptext">
+                                
+                                
+                                
+<!-- Begin eWAY Linking Code -->
+<div id="eWAYBlock">
+    <div style="text-align:center;">
+        <a href="http://www.eway.com.au/secure-site-seal?i=13&s=3&pid=4b84f180-623f-4924-a7fe-8da647d02969&theme=0" title="eWAY Payment Gateway" target="_blank" rel="nofollow">
+            <img alt="eWAY Payment Gateway" src="https://www.eway.com.au/developer/payment-code/verified-seal.ashx?img=13&size=3&pid=4b84f180-623f-4924-a7fe-8da647d02969&theme=0" />
+        </a>
+    </div>
+</div>
+<!-- End eWAY Linking Code -->
+
+
+
+            </div>
+              
+              </div>
+              </div>
+  <style> 
+    [data-zm-asset="cartwidget"]>iframe{ 
+      height: 65px!important; 
+      margin-top: 15px!important;
+      max-width: min-content!important;
+      text-align: right;
+    } 
+    .ziped{float:right;}
+    .small-zip-img{ width:100px;}
+    .zip-container{display: flex; padding-top: 15px;}
+    .ziptext-box{padding-left:15px;}
+    .ziphead{font-weight:700;}
+    .ziptext{font-size:10px; max-width: 350px;}
+  </style> 
+<!-- end Zip widget -->
+</div>
+        {{else}}
+            <h3>{{lang 'cart.checkout.empty_cart'}}</h3>
+        {{/if}}
+
+        {{{snippet 'cart'}}}
+    </main>
+</div>
+{{/partial}}
+{{> layout/base}}
+`

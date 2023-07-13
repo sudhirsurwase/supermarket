@@ -1,0 +1,42 @@
+<div class="emthemesModez-specialProductsTabs{{#if style}} emthemesModez-specialProductsTabs--{{style}}{{/if}}">
+    <ul class="tabs" id="emthemesModez-specialProductsTabs-tabs" data-tab role="tablist">
+        {{#and products.featured theme_settings.specialProductsTab_show_featured}}
+        <li class="tab{{#if theme_settings.specialProductsTab_active_tab '===' 'featured'}} is-active{{/if}}" role="presentation"><a class="tab-title" href="#tab-featured-products" role="tab" tabindex="0" aria-selected="{{#if theme_settings.specialProductsTab_active_tab '===' 'featured'}}true{{else}}false{{/if}}" aria-controls="tab-featured-products">{{lang 'products.featured' }}</a></li>
+        {{/and}}
+        {{#and products.top_sellers theme_settings.specialProductsTab_show_top}}
+        <li class="tab{{#if theme_settings.specialProductsTab_active_tab '===' 'top'}} is-active{{/if}}" role="presentation"><a class="tab-title" href="#tab-bestselling-products" role="tab" tabindex="0" aria-selected="{{#if theme_settings.specialProductsTab_active_tab '===' 'top'}}true{{else}}false{{/if}}" aria-controls="tab-bestselling-products">{{lang 'products.top' }}</a></li>
+        {{/and}}
+        {{#and products.new theme_settings.specialProductsTab_show_new}}
+        <li class="tab{{#if theme_settings.specialProductsTab_active_tab '===' 'new'}} is-active{{/if}}" role="presentation"><a class="tab-title" href="#tab-new-products" role="tab" tabindex="0" aria-selected="{{#if theme_settings.specialProductsTab_active_tab '===' 'new'}}true{{else}}false{{/if}}" aria-controls="tab-new-products">{{lang 'products.new' }}</a></li>
+        {{/and}}
+    </ul>
+    <div class="tabs-contents">
+        {{#and products.featured theme_settings.specialProductsTab_show_featured}}
+        <section role="tabpanel" aria-hidden="{{#if theme_settings.specialProductsTab_active_tab '===' 'featured'}}false{{else}}true{{/if}}" class="tab-content{{#if theme_settings.specialProductsTab_active_tab '===' 'featured'}} is-active{{/if}}" id="tab-featured-products">
+            {{> components/products/featured 
+                products=(limit products.featured theme_settings.specialProductsTab_products_count)
+                columns=4 
+                hide_heading=true 
+                display_type='grid'}}
+        </section>
+        {{/and}}
+        {{#and products.top_sellers theme_settings.specialProductsTab_show_top}}
+        <section role="tabpanel" aria-hidden="{{#if theme_settings.specialProductsTab_active_tab '===' 'top'}}false{{else}}true{{/if}}" class="tab-content{{#if theme_settings.specialProductsTab_active_tab '===' 'top'}} is-active{{/if}}" id="tab-bestselling-products">
+            {{> components/products/top 
+                products=(limit products.top_sellers theme_settings.specialProductsTab_products_count)
+                columns=4 
+                hide_heading=true 
+                display_type='grid'}}
+        </section>
+        {{/and}}
+        {{#and products.new theme_settings.specialProductsTab_show_new}}
+        <section role="tabpanel" aria-hidden="{{#if theme_settings.specialProductsTab_active_tab '===' 'new'}}false{{else}}true{{/if}}" class="tab-content{{#if theme_settings.specialProductsTab_active_tab '===' 'new'}} is-active{{/if}}" id="tab-new-products">
+            {{> components/products/new 
+                products=(limit products.new theme_settings.specialProductsTab_products_count)
+                columns=4 
+                hide_heading=true 
+                display_type='grid'}}
+        </section>
+        {{/and}}
+    </div>
+</div>

@@ -1,0 +1,72 @@
+.papaSupermarket-categoriesList {
+	@include u-listBullets("none");
+	@include grid-row($behavior: "nest");
+	font-size: 0; // 1
+}
+
+.papaSupermarket-categoriesList-item {
+    @include grid-column(6, $float: none);
+    font-size: fontSize("base"); // 1
+    vertical-align: top;
+    display: inline-flex;
+    align-items: flex-start;
+
+	&:nth-child(2) ~ .papaSupermarket-categoriesList-item {
+		margin-top: spacing("single");
+	}
+
+    @include breakpoint("medium") {
+        width: grid-calc(3, $total-columns);
+
+        &:nth-child(2) ~ .papaSupermarket-categoriesList-item {
+            margin-top: 0;
+        }
+
+        &:nth-child(4) ~ .papaSupermarket-categoriesList-item {
+        	margin-top: spacing("single");
+        }
+    }
+}
+
+.papaSupermarket-categoriesList-item-image {
+	flex-basis: auto;
+}
+
+.papaSupermarket-categoriesList-item-body {
+	flex: 1;
+    
+	.papaSupermarket-categoriesList-item-image + & {
+        margin-left: spacing("single");
+    }
+}
+
+.papaSupermarket-categoriesList-item-name {
+	margin: 0 0 spacing("half");
+
+	a {
+		text-decoration: none;
+	}
+}
+
+.papaSupermarket-subCategoriesList {
+	@include u-listBullets("none");	
+
+	a {
+		text-decoration: none;
+	}
+}
+
+.papaSupermarket-subCategoriesList-item {
+	padding: spacing("eighth") 0;
+}
+
+.papaSupermarket-categoriesList-item-moreLink {
+	margin-top: spacing("half");
+
+	a {
+		font-weight: fontWeight("bold");
+		text-decoration: none;
+	}
+}
+
+

@@ -1,0 +1,9 @@
+{{#if page.sub_pages}}
+<div class="sidebarBlock sidebarBlock--navList">
+    <ul class="navList" aria-hidden="false">
+        {{#each page.sub_pages}}
+        <li class="navList-item"><a class="navList-action" href="{{url}}" alt="{{title}}" title="{{title}}">{{title}}</a></li>
+        {{/each}}
+    </ul>
+</div>
+{{/if}}

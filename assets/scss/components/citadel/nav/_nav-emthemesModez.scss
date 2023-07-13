@@ -1,0 +1,10 @@
+
+.navList-subSection .navList-item {
+	margin-left: spacing("half");
+
+	&:before {
+		content: '-';
+		float: left;
+		margin-left: -(spacing("half"));
+	}
+}

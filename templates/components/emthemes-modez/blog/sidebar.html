@@ -1,0 +1,46 @@
+{{#if theme_settings.layout '===' 'left-sidebar'}}
+    {{> components/papa-supermarket/home/sidebar}}
+{{else}}
+<nav class="navList navList--aside">
+    
+    <div class="sidebarBlock">
+        <h5 class="sidebarBlock-heading">{{lang 'category.label'}}</h5>
+        <ul class="navList-section">
+            {{#each categories}}
+            <li class="navList-item">
+                <a class="navList-action" href="{{url}}" alt="{{name}}" title="{{name}}">{{name}}</a>
+                {{#if children}}
+                <ul class="navList-subSection">
+                	{{#each children}}
+                	<li class="navList-item">
+                		<a class="navList-action" href="{{url}}" alt="{{name}}" title="{{name}}">{{name}}</a>
+                	</li>
+                	{{/each}}
+                </ul>
+                {{/if}}
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+
+
+    <div class="sidebarBlock">
+    	<h5 class="sidebarBlock-heading">{{lang 'products.new'}}</h5>
+    	<ul class="productList" data-product-type="new">
+	        {{#each products.new}}
+	            <li class="product">
+	                {{>components/products/list-item 
+	                	show_rating=false
+	                	summary=false
+	                	hide_add_to_cart=true
+	                	show_compare=../show_compare 
+	                	show_rating=../settings.show_product_rating 
+                        hide_product_quick_view=true
+	                	theme_settings=../theme_settings customer=../customer}}
+	            </li>
+	        {{/each}}
+	    </ul>	
+    </div>
+    
+</nav>
+{{/if}}

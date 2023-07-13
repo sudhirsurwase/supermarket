@@ -1,0 +1,67 @@
+.form-label--alternate {
+	text-transform: uppercase;
+	font-size: fontSize("base");
+	font-weight: fontWeight("bold");
+}
+
+.form-option { 
+	border: 1px solid rgba($input-border-color, 0.3);
+}
+
+.form-radio:checked + .form-option {
+	border: 1px solid $input-border-color;
+}
+
+
+.form-increment {
+	display: inline-block;
+	border-top: 1px solid $input-border-color;
+	border-bottom: 1px solid $input-border-color;
+	white-space: nowrap;
+	letter-spacing: -0.5em;
+
+	.button {
+		border-top: 0;
+		border-bottom: 0;
+		border-color: $input-border-color;
+		padding: spacing("third");
+	}
+}
+
+
+.form-input--incrementTotal {
+	width: spacing("double");
+}
+
+
+.form-prefixPostfix {
+	.form-input {
+		@include breakpoint("medium") {
+			width: auto;
+		}
+	}
+	.button {
+		@include breakpoint("medium") {
+			width: auto;
+		}
+	}
+}
+.form-prefixPostfix-button--postfix {
+	@include breakpoint("medium") {
+		margin: 0 0 0 spacing("half");
+	}
+}
+
+
+// ----------------------------------------------------------------------------
+// Gift Certification form
+// ----------------------------------------------------------------------------
+
+.gift-certificate-form {
+	.form-column {
+		.form-field:not(.form-field-group) {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+}

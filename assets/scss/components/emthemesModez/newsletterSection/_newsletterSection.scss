@@ -1,0 +1,91 @@
+.emthemesModez-newsletterSection {
+
+
+
+}
+
+.emthemesModez-newsletterSection--hasSocials {
+
+
+
+}
+
+
+.emthemesModez-newsletterForm {
+
+	@include breakpoint("medium") {
+		display: flex;
+		align-items: center;
+
+		> * {
+			margin: 0 spacing("single") 0 0;
+		}
+
+		.footer-info-heading {
+			margin: 0 spacing("single") 0 0;
+		}
+
+		> .form {
+			width: 35%;
+			margin-left: auto;
+			margin-right: 0;
+		}
+	}
+
+	p {
+		text-decoration: underline;
+	}
+
+
+	.form-field {
+		margin: 0;
+	}
+
+	.form-prefixPostfix {
+		.form-input {
+			border-radius: $input-border-radius;
+
+			@include breakpoint("small") {
+				width: auto;
+				border-radius: $input-border-radius 0 0 $input-border-radius;
+			}
+		}
+
+		.button {
+			@include breakpoint("small") {
+				width: auto;
+				margin-top: 0;
+			}
+		}
+	}
+
+	.form-prefixPostfix-button--postfix {
+		border-radius: $input-border-radius;
+		
+		@include breakpoint("small") {
+			border-radius: 0 $input-border-radius $input-border-radius 0;
+		}
+
+		@include breakpoint("large") {
+			margin-left: 0;
+		}
+	}
+
+	.button {
+		background-color: color("blacks");
+		border-color: color("blacks");
+		color: color("whites");
+
+		&:hover,
+		&:focus {
+			opacity: 0.8;
+		}
+	}
+}
+
+
+.emthemesModez-socials {
+	.footer-info-heading {
+		display: none;
+	}
+}

@@ -1,0 +1,24 @@
+{{#each categories}}
+    {{#if id '==' ../category_id}}
+        <h2 class="emthemesModez-productsByCategory-heading {{#if ../../style}}emthemesModez-productsByCategory-heading--{{../../../style}}{{/if}}"><a href="{{url}}">{{name}}</a></h2>
+        <section class="emthemesModez-productsByCategory">
+            <div class="emthemesModez-productsByCategory-categoriesColumn">
+                <div class="emthemesModez-productsByCategory-categorySideImage">
+                    <a href="{{url}}"><img src="{{../../heading_image}}" alt="{{name}}" /></a>
+                </div>
+                <div class="emthemesModez-productsByCategory-sub">
+                    <h3 class="emthemesModez-productsByCategory-sub-heading">{{../../subcategory_title}}</h3>
+                    <ul class="emthemesModez-productsByCategory-sub-list">
+                    {{#each children}}
+                        <li class="emthemesModez-productsByCategory-sub-item"><a href="{{url}}">{{name}}</a></li>
+                    {{/each}}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="emthemesModez-productsByCategory-productsColumn" data-emthemesmodez-products-by-category="{{url}}">
+                {{> components/emthemes-modez/common/product-loading theme_settings=../../theme_settings}}
+            </div>
+        </section>
+    {{/if}}
+{{/each}}

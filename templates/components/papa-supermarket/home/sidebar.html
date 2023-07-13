@@ -1,0 +1,11 @@
+<nav class="navList navList--aside">
+    
+    {{> components/papa-supermarket/sidebar/categories-menu}}
+    {{#if theme_settings.show_shop_by_brand}}
+        {{> components/papa-supermarket/sidebar/brands}}
+    {{/if}}
+
+    <div data-emthemesmodez-remote-banner="emthemesModezBannersBlockSidebar01"></div>
+    {{> components/papa-supermarket/sidebar/facebook}}
+    <div data-emthemesmodez-remote-banner="emthemesModezBannersBlockSidebar02"></div>
+</nav>

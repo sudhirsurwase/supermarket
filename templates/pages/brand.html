@@ -1,0 +1,55 @@
+---
+brand:
+    products:
+        limit: {{theme_settings.brandpage_products_per_page}}
+blog:
+    recent_posts:
+        limit: {{theme_settings.footer_show_blog}}
+---
+{{inject "brandProductsPerPage" theme_settings.brandpage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.brand.previous}}
+        <link rel="prev" href="{{pagination.brand.previous}}">
+    {{/if}}
+    {{#if pagination.brand.next}}
+        <link rel="next" href="{{pagination.brand.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+
+<h1 class="page-heading page-heading--mobileOnly">{{brand.name}}</h1>
+
+{{{snippet 'brand'}}}
+<div class="page">
+    <aside class="page-sidebar page-sidebar--top" id="faceted-search-container">
+        {{> components/brand/sidebar}}
+    </aside>
+
+    <main class="page-content">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+        {{#if brand.image}}
+            <img class="emthemesModez-brandPage-mainImage" src="{{getImage brand.image 'thumb_size'}}">
+        {{/if}}
+        <p class="h1 page-heading page-heading--desktopOnly">{{brand.name}}</p>
+
+        {{{brand.description}}}
+
+        <div id="product-listing-container" class="
+            {{#if theme_settings.product_list_display_mode '===' 'grid2'}}mode-2
+            {{else if theme_settings.product_list_display_mode '===' 'grid3'}}mode-3
+            {{else if theme_settings.product_list_display_mode '===' 'grid6'}}mode-6
+            {{else if theme_settings.product_list_display_mode '===' 'list'}}mode-1{{/if}}
+        ">
+            {{#if brand.products}}
+                {{> components/brand/product-listing}}
+            {{else}}
+                <p>{{lang 'brands.no_products'}}</p>
+            {{/if}}
+        </div>
+    </main>
+</div>
+
+{{/partial}}
+{{> layout/base}}

@@ -1,0 +1,472 @@
+
+
+.navPages-action {
+	font-size: fontSize("small");
+
+    @include breakpoint("medium") {
+        padding: spacing("half") (spacing("half") + spacing("quarter"));
+
+        &.is-open {
+			background-color: darken(stencilColor("navPages-rootMenu-backgroundColor"), 10%);
+
+			svg {
+                fill: stencilColor("navPages-color");
+                stroke: stencilColor("navPages-color");
+			}
+			
+			&:hover {
+				svg {
+					fill: stencilColor("navPages-color-hover");
+					stroke: stencilColor("navPages-color-hover");
+				}
+			}
+		}
+    }
+}
+
+.navPage-subMenu-action {
+	font-size: fontSize("base");
+	font-weight: fontWeight("normal");
+
+	&.has-subMenu {
+		text-transform: uppercase;
+		font-weight: fontWeight("bold");
+	}
+
+	@include breakpoint("medium") {
+		color: stencilColor("navPages-subMenu-color");
+
+		&:hover,
+		&:focus,
+		&:active {
+			color: stencilColor("navPages-subMenu-color-hover");
+		}
+
+		&.is-open {
+			background-color: transparent;
+		}
+	}
+}
+
+
+
+.navPages {
+	margin: 0 (-($container-padding));
+
+	@include breakpoint("medium") {
+		margin: 0;
+		background: stencilColor("navPages-rootMenu-backgroundColor");
+		text-align: left;
+		display: flex;
+		justify-content: space-between;
+
+		&:before,
+		&:after {
+			display: none;
+		}
+
+		// Fix alignment issue
+		> .emthemesModez-navPages-verticalCategories-container,
+		> .navPages-list {
+			vertical-align: top;
+		}
+	}
+}
+
+
+.navPages-container {
+	> .container {
+		height: 100%;
+
+		@include breakpoint("medium") {
+			height: auto;
+		}
+	}
+}
+
+.navPages-list {
+	
+	.navPages & {
+		@include breakpoint("medium") {
+			margin-right: auto;
+		}
+	}
+
+	.emthemesModez-navPages-verticalCategories-container + & {
+
+		border-top: 1px solid $navPages-list--user-borderColor;
+        margin-top: spacing("half");
+        padding-top: spacing("half");
+
+		@include breakpoint("medium") {
+			border-top: 0;
+			margin-top: 0;
+			padding-top: 0;
+		}
+	}
+}
+
+.navPage-subMenu {
+	@include breakpoint("medium") {
+		box-shadow: 1px 1px 3px rgba(color("blacks"), 0.1);
+		border: 1px solid stencilColor("navPages-borderColor");
+
+		&.is-open {
+			left: 20%;
+			width: 80%;
+		}
+	}
+}
+
+.navPage-subMenu--standard {
+	@include breakpoint("medium") {
+		&.is-open {
+			width: 20%;
+			left: auto;
+		}
+	}
+
+	.navPage-subMenu-item {
+		display: block;
+		width: auto;
+		padding: 0 !important;
+
+		.navPage-subMenu-action {
+			margin-bottom: 0;
+			border-bottom: 0;
+		}
+	}
+
+	.navPages-action {
+		padding: spacing("quarter") 0;
+	}
+
+	.navPage-subMenu-action.has-subMenu {
+		text-transform: none;
+		font-weight: fontWeight("normal");
+	}
+
+	.navPage-childList-action {
+		padding-left: spacing("base");
+		position: relative;
+
+		&:before {
+			content: '\f105';
+			font-family: FontAwesome;
+			position: absolute;
+			left: 0;
+		}
+	}
+}
+
+
+
+.navPage-subMenu-list {
+	@extend %navPage-childList;
+
+	@include breakpoint("medium") {
+		@include grid-row();
+		border-left: 0;
+		margin: auto;
+		padding-left: 0;
+	}
+}
+
+.navPage-subMenu-item {
+	@include breakpoint("medium") {
+		@include grid-column(4);
+		float: none;
+		display: inline-block;
+		vertical-align: top;
+
+		&:first-child {
+			display: none;
+		}
+	}
+}
+
+.navPage-childList {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	margin-bottom: spacing("single");
+}
+
+.navPage-childList-action {
+	font-size: fontSize("base");
+	font-weight: fontWeight("normal");
+
+	@include breakpoint("medium") {
+		padding-top: spacing("quarter");
+		padding-bottom: spacing("quarter");
+		color: stencilColor("navPages-subMenu-color");
+
+		&:hover,
+		&:focus,
+		&:active {
+			color: stencilColor("navPages-subMenu-color-hover");
+		}
+	}
+}
+
+
+.navPages-socials {
+	@include breakpoint("medium") {
+		margin-right: 0;
+		margin-left: auto;
+		white-space: nowrap;
+		padding-top: spacing("quarter");
+	}
+}
+
+
+
+//
+// Quick search inside the mobile nav
+// -----------------------------------------------------------------------------
+
+.navPages-quickSearch {
+	border-bottom: 0;
+}
+
+
+// ============================================================================
+// Categories Vertical Menu 
+// ============================================================================
+.emthemesModez-navPages-verticalCategories-container {
+
+	> .navPages-action {
+		display: none;
+	}
+	
+	@include breakpoint("medium") {
+		display: inline-block;
+		$w: calc(20% - #{$column-gutter * 4/5});
+		width: $w;
+		flex: 0 0 $w;
+		position: relative;
+		background-color: stencilColor("navPages-categoriesItem-backgroundColor");
+		margin-right: $column-gutter / 2;
+
+		// hide categories menu on header, it already exists in the left sidebar
+		.papaSupermarket-layout--left-sidebar .navPages & {
+			display: none;
+
+			+ * {
+				margin-left: calc(20% - #{spacing("half")});
+			}
+		}
+
+		> .navPages-action {
+			color: stencilColor("navPages-categoriesItem-color");
+			width: 100%;
+			display: inline-block;
+
+			&:hover,
+			&:focus {
+				color: stencilColor("navPages-categoriesItem-color");
+			}
+
+			&:after {
+				content: "\eeb8";
+				font-family: emthemesmodezicons;
+				float: right;
+				font-weight: normal;
+			}
+		}
+	}
+
+	@include breakpoint("xxlarge") {
+		// width: 20%;
+		// flex-basis: 20%;
+	}
+
+	// when appear on the left sidebar
+	.page-sidebar & {
+		display: none;
+
+		@include breakpoint("medium") {
+			width: 100%;
+			display: block;
+			z-index: zIndex("lower");
+		}
+	}
+}
+
+
+// display vertical categories menu on header for these pages
+[class*='papaSupermarket-page--pages-auth-'],
+[class*='papaSupermarket-page--pages-account-'],
+[class*='papaSupermarket-page--pages-errors-'],
+.papaSupermarket-page--pages-compare {
+	.navPages .emthemesModez-navPages-verticalCategories-container {
+		@include breakpoint("medium") {
+			display: block;
+
+			+ * {
+				margin-left: 0;
+			}
+		}
+	}
+}
+
+.emthemesModez-verticalCategories {
+	@include breakpoint("medium") {
+		position: absolute;
+		width: 100%;
+		background: stencilColor("navPages-subMenu-backgroundColor");
+		transform: rotateX(90deg);
+		border: 1px solid stencilColor("navPages-borderColor");
+
+		&.is-open {
+			transform: rotateX(0);
+		}
+
+		.page-sidebar & {
+			position: relative;
+			@include clearfix;
+		}
+
+		.navPages-list {
+			display: block;
+		}
+
+		.navPages-action {
+			font-size: fontSize("base");
+			color: stencilColor("navPages-subMenu-color");
+			width: 100%;
+
+			&[data-current-category],
+			&:hover,
+			&:focus {
+				color: stencilColor("navPages-subMenu-color-hover");
+
+				svg {
+					fill: stencilColor("navPages-subMenu-color-hover");
+			    	stroke: stencilColor("navPages-subMenu-color-hover");	
+				}
+			}
+
+			svg {
+			    fill: stencilColor("navPages-subMenu-color");
+			    stroke: stencilColor("navPages-subMenu-color");
+			}
+		}
+
+		.navPages-item {
+			width: 100%;
+			// position: relative; // Comment out if you want to show submenu on the same line with the parent menu item
+
+			> .navPages-action {
+				text-transform: none;
+			}
+
+			+ .navPages-item > .navPages-action {
+				border-top: 1px solid stencilColor("navPages-subMenu-separatorColor");
+			}
+		}
+
+		.navPages-action-moreIcon {
+			float: right;
+			height: remCalc(fontSize("smaller") * lineHeight("base"));
+		}
+
+		.has-subMenu.is-open .navPages-action-moreIcon {
+			transform: rotate(-90deg);
+		}
+
+		.navPage-subMenu.is-open {
+			// width: 300%;
+			width: calc(400% + #{$column-gutter * 4.5});
+			min-height: 100%; // submenu container full height of vertical parent menu
+			left: 100%;
+			top: 0;
+
+			// when appear on the left sidebar
+			.page-sidebar & {
+				width: calc(400% + #{$column-gutter * 4.5});
+			}
+		}
+	}
+
+	@include breakpoint("xxlarge") {
+		.navPage-subMenu.is-open {
+			// width: 400%;
+		}
+	}
+}
+
+.emthemesModez-verticalCategories--open {
+	@include breakpoint("medium") {
+		transform: rotateX(0);
+	}
+}
+
+
+
+
+
+// ============================================================================
+// Make expand/collapse vertically sub categories menu 
+// ============================================================================
+
+.navPage-subMenu--vertical {
+	@include breakpoint("medium") {
+
+		position: static;
+		width: auto;
+		padding: 0 !important;
+		border: 0;
+		border-top: 1px solid stencilColor("navPages-subMenu-separatorColor");
+		box-shadow: none;
+		background-color: darken(stencilColor("navPages-subMenu-backgroundColor"), 5%);
+
+		&.navPage-subMenu.is-open {
+			display: block;			
+		}
+
+		.page-sidebar .emthemesModez-verticalCategories &.is-open {
+			width: 100%;
+		}
+
+		.navPages-action-moreIcon {
+			display: block;
+		}
+
+		.navPage-subMenu-item {
+			width: 100%;
+			padding: 0 !important;
+
+			&:first-child {
+				display: block;
+			}
+
+			> .navPage-subMenu-action {
+				margin-bottom: 0;
+			}
+		}
+
+		.navPage-childList {
+			border-bottom: 1px solid stencilColor("navPages-subMenu-separatorColor");
+			padding-top: spacing("third");
+			padding-bottom: spacing("third");
+			margin-bottom: 0;
+		}
+	}
+}
+
+.navPages-action-moreIcon {
+	@include breakpoint("medium") {
+		.navPages-action--vertical &,
+		.navPage-subMenu--vertical & {
+			transform: rotate(-90deg);
+
+		}
+
+		.navPages-action--vertical.has-subMenu.is-open &,
+		.emthemesModez-verticalCategories .navPage-subMenu--vertical .has-subMenu.is-open & {
+			transform: none;			
+		}
+	}
+}
+

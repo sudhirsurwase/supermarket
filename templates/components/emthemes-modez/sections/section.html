@@ -1,0 +1,296 @@
+
+{{#if section '==' 'slideshow'}}
+    {{#if carousel}}
+        {{> components/carousel}}
+    {{/if}}
+{{/if}}
+
+
+{{#if section '==' 'new_products'}}
+    {{#if products.new}}
+        <div class="emthemesModez-section emthemesModez-section--alt {{#if index}}emthemesModez-section--index{{index}}{{/if}} emthemesModez-section--newProducts emthemesModez-section--displayType-{{theme_settings.homepage_new_products_display_type}}">
+        <div class="emthemesModez-section-inner">
+        {{> components/papa-supermarket/products/new 
+            products=products.new 
+            columns=theme_settings.homepage_new_products_column_count 
+            display_type=theme_settings.homepage_new_products_display_type}}
+        </div>
+        </div>
+    {{/if}}
+{{/if}}
+
+
+{{#if section '==' 'featured_products'}}
+    {{#if products.featured}}
+        <div class="emthemesModez-section {{#if index}}emthemesModez-section--index{{index}}{{/if}} emthemesModez-section--featuredProducts emthemesModez-section--displayType-{{theme_settings.homepage_featured_products_display_type}}">
+        <div class="emthemesModez-section-inner">
+        {{> components/products/featured 
+            products=products.featured 
+            columns=theme_settings.homepage_featured_products_column_count 
+            display_type=theme_settings.homepage_featured_products_display_type}}
+        </div>
+        </div>
+    {{/if}}
+{{/if}}
+
+{{#if section '==' 'popular_products'}}
+    {{#if products.top_sellers}}
+        <div class="emthemesModez-section {{#if index}}emthemesModez-section--index{{index}}{{/if}} emthemesModez-section--topProducts emthemesModez-section--displayType-{{theme_settings.homepage_top_products_display_type}}">
+        <div class="emthemesModez-section-inner">
+        {{> components/products/top 
+            products=products.top_sellers 
+            columns=theme_settings.homepage_top_products_column_count 
+            display_type=theme_settings.homepage_top_products_display_type}}
+        </div>
+        </div>
+    {{/if}}
+{{/if}}
+
+{{#if section '==' 'special_products_tabs'}}
+    {{#or theme_settings.specialProductsTab_show_featured theme_settings.specialProductsTab_show_top theme_settings.specialProductsTab_show_new products.featured products.top_sellers products.new}}
+    <div class="emthemesModez-section {{#if index}}emthemesModez-section--index{{index}}{{/if}} emthemesModez-section--specialProductsTabs">
+    <div class="emthemesModez-section-inner">
+    {{> components/emthemes-modez/sections/section-special-products-tabs style="supermarket1"}}
+    </div>
+    </div>
+    {{/or}}
+{{/if}}
+
+{{#if section '==' 'special_products_columns'}}
+    {{#or theme_settings.specialProductsColumns_show_featured theme_settings.specialProductsColumns_show_top theme_settings.specialProductsColumns_show_new}}
+    <div class="emthemesModez-section {{#if index}}emthemesModez-section--index{{index}}{{/if}} emthemesModez-section--specialProductsColumns">
+    <div class="emthemesModez-section-inner">
+    {{> components/papa-supermarket/sections/section-special-products-columns}}
+    </div>
+    </div>
+    {{/or}}
+{{/if}}
+
+
+{{#if section '==' 'products_by_category_1'}}
+    <div class="emthemesModez-section {{#if index}}emthemesModez-section--index{{index}}{{/if}} emthemesModez-section--productsByCategory">
+    <div class="emthemesModez-section-inner">
+    {{> components/emthemes-modez/sections/section-products-by-category index=1}}
+    </div>
+    </div>
+{{/if}}
+
+{{#if section '==' 'products_by_category_2'}}
+    <div class="emthemesModez-section {{#if index}}emthemesModez-section--index{{index}}{{/if}} emthemesModez-section--productsByCategory">
+    <div class="emthemesModez-section-inner">
+    {{> components/emthemes-modez/sections/section-products-by-category index=2}}
+    </div>
+    </div>
+{{/if}}
+
+{{#if section '==' 'products_by_category_3'}}
+    <div class="emthemesModez-section {{#if index}}emthemesModez-section--index{{index}}{{/if}} emthemesModez-section--productsByCategory">
+    <div class="emthemesModez-section-inner">
+    {{> components/emthemes-modez/sections/section-products-by-category index=3}}
+    </div>
+    </div>
+{{/if}}
+
+
+{{#if section '==' 'products_by_category_sorting_tabs'}}
+    {{#if theme_settings.productsByCategorySortingTabs_count '>' 0}}
+    {{#each (limit categories theme_settings.productsByCategorySortingTabs_count)}}
+        {{#if count '>' 0}}
+            <div class="emthemesModez-section emthemesModez-section--productsByCategorySortingTabs">
+            <div class="emthemesModez-section-inner">
+            {{> components/papa-supermarket/category/ajax-products-by-category-sorting-tabs style='supermarket1' theme_settings=../../theme_settings}}
+            </div>
+            </div>
+        {{/if}}
+    {{/each}}
+    {{/if}}
+{{/if}}
+
+{{#if section '==' 'products_by_category_subcategories_tabs_1'}}
+    <div class="emthemesModez-section {{#if index}}emthemesModez-section--index{{index}}{{/if}} emthemesModez-section--productsByCategorySubcategoriesTabs">
+    <div class="emthemesModez-section-inner">
+    {{> components/emthemes-modez/sections/section-products-by-category-subcategories-tabs index=1}}
+    </div>
+    </div>
+{{/if}}
+
+{{#if section '==' 'products_by_category_subcategories_tabs_2'}}
+    <div class="emthemesModez-section {{#if index}}emthemesModez-section--index{{index}}{{/if}} emthemesModez-section--productsByCategorySubcategoriesTabs">
+    <div class="emthemesModez-section-inner">
+    {{> components/emthemes-modez/sections/section-products-by-category-subcategories-tabs index=2}}
+    </div>
+    </div>
+{{/if}}
+
+{{#if section '==' 'products_by_category_subcategories_tabs_3'}}
+    <div class="emthemesModez-section {{#if index}}emthemesModez-section--index{{index}}{{/if}} emthemesModez-section--productsByCategorySubcategoriesTabs">
+    <div class="emthemesModez-section-inner">
+    {{> components/emthemes-modez/sections/section-products-by-category-subcategories-tabs index=3}}
+    </div>
+    </div>
+{{/if}}
+
+{{#if section '==' 'categories_grid'}}
+    <div class="emthemesModez-section {{#if index}}emthemesModez-section--index{{index}}{{/if}} emthemesModez-section--categoriesGrid">
+    <div class="emthemesModez-section-inner">
+    {{> components/emthemes-modez/sections/section-categories-grid limit=8}}
+    </div>
+    </div>
+{{/if}}
+
+{{#if section '==' 'categories_list'}}
+    {{#if theme_settings.categoriesList_count '>' 0}}
+    <div class="emthemesModez-section {{#if index}}emthemesModez-section--index{{index}}{{/if}} emthemesModez-section--categoriesGrid">
+    <div class="emthemesModez-section-inner">
+    {{> components/papa-supermarket/sections/section-categories-list limit=theme_settings.categoriesList_count sub_limit=theme_settings.categoriesList_subCount}}
+    </div>
+    </div>
+    {{/if}}
+{{/if}}
+
+
+{{#if section '==' 'blog_recent'}}
+    <div class="emthemesModez-section {{#if index}}emthemesModez-section--index{{index}}{{/if}} emthemesModez-section--blog">
+    <div class="emthemesModez-section-inner">
+    {{> components/emthemes-modez/blog/featured posts=(limit blog.recent_posts theme_settings.homepage_blog_posts_count) style="featured"}}
+    </div>
+    </div>
+{{/if}}
+
+
+
+{{#if section '==' 'brands_carousel'}}
+    <div class="emthemesModez-section {{#if index}}emthemesModez-section--index{{index}}{{/if}} emthemesModez-section--brandsCarousel">
+    <div class="emthemesModez-section-inner">
+    {{> components/emthemes-modez/brand/carousel hide_heading=true hide_view_all=true}}
+    </div>
+    </div>
+{{/if}}
+
+
+{{#if section '==' 'images_carousel'}}
+    <div class="emthemesModez-section {{#if index}}emthemesModez-section--index{{index}}{{/if}} emthemesModez-section--imagesCarousel">
+    <div class="emthemesModez-section-inner">
+    {{> components/emthemes-modez/brand/carousel hide_heading=true hide_view_all=true type="static"}}
+    </div>
+    </div>
+{{/if}}
+
+
+
+{{#if section '==' 'banner_2313_1'}}
+    <div class="emthemesModez-section {{#if index}}emthemesModez-section--index{{index}}{{/if}} emthemesModez-section--banners-2313">
+    <div class="emthemesModez-section-inner">
+    {{> components/emthemes-modez/banners/twothird-onethird index=1}}
+    </div>
+    </div>
+{{/if}}
+
+{{#if section '==' 'banner_2313_2'}}
+    <div class="emthemesModez-section {{#if index}}emthemesModez-section--index{{index}}{{/if}} emthemesModez-section--banners-2313">
+    <div class="emthemesModez-section-inner">
+    {{> components/emthemes-modez/banners/twothird-onethird index=2}}
+    </div>
+    </div>
+{{/if}}
+
+{{#if section '==' 'banner_2313_3'}}
+    <div class="emthemesModez-section {{#if index}}emthemesModez-section--index{{index}}{{/if}} emthemesModez-section--banners-2313">
+    <div class="emthemesModez-section-inner">
+    {{> components/emthemes-modez/banners/twothird-onethird index=3}}
+    </div>
+    </div>
+{{/if}}
+
+
+
+
+{{#if section '==' 'banner_3x_1'}}
+    <div class="emthemesModez-section {{#if index}}emthemesModez-section--index{{index}}{{/if}} emthemesModez-section--banners-3x">
+    <div class="emthemesModez-section-inner">
+    {{> components/emthemes-modez/banners/onethird-x3 index=1 style=theme_settings.banner3x_1_style background_color=theme_settings.banner3x_1_backgroundColor}}
+    </div>
+    </div>
+{{/if}}
+
+{{#if section '==' 'banner_3x_2'}}
+    <div class="emthemesModez-section {{#if index}}emthemesModez-section--index{{index}}{{/if}} emthemesModez-section--banners-3x">
+    <div class="emthemesModez-section-inner">
+    {{> components/emthemes-modez/banners/onethird-x3 index=2 style=theme_settings.banner3x_2_style background_color=theme_settings.banner3x_2_backgroundColor}}
+    </div>
+    </div>
+{{/if}}
+
+{{#if section '==' 'banner_3x_3'}}
+    <div class="emthemesModez-section {{#if index}}emthemesModez-section--index{{index}}{{/if}} emthemesModez-section--banners-3x">
+    <div class="emthemesModez-section-inner">
+    {{> components/emthemes-modez/banners/onethird-x3 index=3 style=theme_settings.banner3x_3_style background_color=theme_settings.banner3x_3_backgroundColor}}
+    </div>
+    </div>
+{{/if}}
+
+
+
+
+{{#if section '==' 'banner_one_1'}}
+    <div class="emthemesModez-section {{#if index}}emthemesModez-section--index{{index}}{{/if}} emthemesModez-section--banners-one">
+    <div class="emthemesModez-section-inner">
+    {{> components/emthemes-modez/banners/one index=1 style=theme_settings.banner_one_1_style background_color=theme_settings.banner_one_1_backgroundColor}}
+    </div>
+    </div>
+{{/if}}
+
+{{#if section '==' 'banner_one_2'}}
+    <div class="emthemesModez-section {{#if index}}emthemesModez-section--index{{index}}{{/if}} emthemesModez-section--banners-one">
+    <div class="emthemesModez-section-inner">
+    {{> components/emthemes-modez/banners/one index=2 style=theme_settings.banner_one_2_style background_color=theme_settings.banner_one_2_backgroundColor}}
+    </div>
+    </div>
+{{/if}}
+
+{{#if section '==' 'banner_one_3'}}
+    <div class="emthemesModez-section {{#if index}}emthemesModez-section--index{{index}}{{/if}} emthemesModez-section--banners-one">
+    <div class="emthemesModez-section-inner">
+    {{> components/emthemes-modez/banners/one index=3 style=theme_settings.banner_one_3_style background_color=theme_settings.banner_one_3_backgroundColor}}
+    </div>
+    </div>
+{{/if}}
+
+
+
+{{#if section '==' 'banner_half_1'}}
+    <div class="emthemesModez-section {{#if index}}emthemesModez-section--index{{index}}{{/if}} emthemesModez-section--banners-half">
+    <div class="emthemesModez-section-inner">
+    {{> components/emthemes-modez/banners/half index=1 style=theme_settings.banner_half_1_style background_color=theme_settings.banner_half_1_backgroundColor}}
+    </div>
+    </div>
+{{/if}}
+
+{{#if section '==' 'banner_half_2'}}
+    <div class="emthemesModez-section {{#if index}}emthemesModez-section--index{{index}}{{/if}} emthemesModez-section--banners-half">
+    <div class="emthemesModez-section-inner">
+    {{> components/emthemes-modez/banners/half index=2 style=theme_settings.banner_half_2_style background_color=theme_settings.banner_half_2_backgroundColor}}
+    </div>
+    </div>
+{{/if}}
+
+{{#if section '==' 'banner_half_3'}}
+    <div class="emthemesModez-section {{#if index}}emthemesModez-section--index{{index}}{{/if}} emthemesModez-section--banners-half">
+    <div class="emthemesModez-section-inner">
+    {{> components/emthemes-modez/banners/half index=3 style=theme_settings.banner_half_3_style background_color=theme_settings.banner_half_3_backgroundColor}}
+    </div>
+    </div>
+{{/if}}
+
+{{#if section '==' 'bc_banner_home_1'}}
+    {{> components/papa-supermarket/sections/section-bc-banner find="emthemesModezBannersBlockHome01"}}
+{{/if}}
+
+{{#if section '==' 'bc_banner_home_2'}}
+    {{> components/papa-supermarket/sections/section-bc-banner find="emthemesModezBannersBlockHome02"}}
+{{/if}}
+
+{{#if section '==' 'bc_banner_home_3'}}
+    {{> components/papa-supermarket/sections/section-bc-banner find="emthemesModezBannersBlockHome03"}}
+{{/if}}
+

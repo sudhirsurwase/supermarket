@@ -1,0 +1,118 @@
+.card {
+	background-color: container("fill");
+	margin-bottom: spacing("single");
+}
+
+.card-body {
+    @include breakpoint("small") {
+        text-align: center;
+    }
+	
+    .price {
+    	font-size: fontSize("small");
+    	font-weight: fontWeight("bold");
+    }
+}
+
+.card-figcaption-body {
+	display: inline;
+	transform: none;
+	position: static;
+}
+
+.card-figure {
+	position: relative;
+	overflow: hidden;
+}
+.card-image ~ .card-image {
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	transition: opacity 0.5s ease;
+}
+.card:hover,
+.card:focus,
+.card:active {
+	.card-image ~ .card-image {
+		opacity: 1;
+	}
+}
+
+.card-figcaption-button.button--primary {
+    @include buttonVariant('primary');
+}
+
+
+.card-figcaption-body-bottomGroup {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: stencilColor("card-figcaption-button-background");
+	padding: spacing("half") 0;
+
+	.card-figcaption-button {
+
+		&:first-child {
+			margin-top: 0;
+		}
+
+		&:hover {
+			background: stencilColor("card-figcaption-button-background");
+			opacity: 0.6;
+		}
+	}
+}
+
+.card-figcaption-body-rightGroup {
+	position: absolute;
+	top: 0;
+	right: 0;
+
+	.card-figcaption-button {
+		text-indent: -9999px;
+		font-size: 0;
+		padding: 5px;
+		line-height: fontSize("large");
+		border: 0;
+		background: transparent;
+	
+		&:before {
+			font-family: 'emthemesmodezicons' !important;
+			font-style: normal;
+			content: $emthemesModez-icon-cart;
+			text-indent: 0;
+			float: left;
+			font-size: fontSize("large");
+		}
+
+		&:hover {
+			background: transparent;
+			opacity: 0.6;
+		}
+	}
+
+	.card-figcaption-button--compare:before {
+		content: $emthemesModez-icon-compare;
+	}
+
+}
+
+
+
+.card-figcaption-button.quickview {
+
+}
+
+
+.card-aside {
+	display: none;
+}
+
+.card-text--summary {
+	display: none;
+}

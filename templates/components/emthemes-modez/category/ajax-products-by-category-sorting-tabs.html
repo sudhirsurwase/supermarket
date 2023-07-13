@@ -1,0 +1,52 @@
+{{!--
+Arguments:
+    - category_id (number)
+    - style (string): CSS class styling suffix
+    - style2 (string): CSS class styling suffix
+
+
+Global variables:
+    - categories (array)
+
+--}}
+
+{{#each categories}}
+    {{#if id '==' ../category_id}}
+        <div class="emthemesModez-productsByCategoryTabs emthemesModez-productsByCategoryTabs--sorting
+                {{#if ../../style}}emthemesModez-productsByCategoryTabs--{{../../../style}}{{/if}}
+                {{#if ../../style2}}emthemesModez-productsByCategoryTabs--{{../../../style2}}{{/if}}
+            ">
+            <ul class="tabs" data-tab data-tab-emthemesmodez-products-by-category-tabs role="tablist">
+                <li class="li-heading"><h2 class="page-heading"><a href="{{url}}">{{name}}</a></h2></li>
+                <li class="tab is-active" role="presentation"><a class="tab-title" href="#tab-productsByCategoryTabs-featured-{{id}}" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-productsByCategoryTabs-featured-{{id}}">{{lang 'emthemesmodez.products_by_category_sorting_tabs.featured' }}</a></li>
+                <li class="tab" role="presentation"><a class="tab-title" href="#tab-productsByCategoryTabs-new-{{id}}" role="tab" tabindex="0" aria-selected="false" aria-controls="tab-productsByCategoryTabs-new-{{id}}">{{lang 'emthemesmodez.products_by_category_sorting_tabs.new' }}</a></li>
+                <li class="tab " role="presentation"><a class="tab-title" href="#tab-productsByCategoryTabs-bestselling-{{id}}" role="tab" tabindex="0" aria-selected="false" aria-controls="tab-productsByCategoryTabs-bestselling-{{id}}">{{lang 'emthemesmodez.products_by_category_sorting_tabs.bestselling' }}</a></li>
+                <li class="tab" role="presentation"><a class="tab-title" href="#tab-productsByCategoryTabs-reviews-{{id}}" role="tab" tabindex="0" aria-selected="false" aria-controls="tab-productsByCategoryTabs-reviews-{{id}}">{{lang 'emthemesmodez.products_by_category_sorting_tabs.reviews' }}</a></li>
+                <li class="tab tab--link" role="presentation"><span><a class="tab-title" href="{{url}}" role="tab" tabindex="0" aria-selected="false">{{lang 'emthemesmodez.products_by_category_sorting_tabs.view_all'}}</a></span></li>
+            </ul>
+            <div class="tabs-contents">
+
+                <section role="tabpanel" aria-hidden="false" class="tab-content is-active" id="tab-productsByCategoryTabs-featured-{{id}}" 
+                    data-emthemesmodez-products-by-category-tabs="{{concat url '?sort=featured'}}">
+                    {{> components/emthemes-modez/common/product-loading theme_settings=../../theme_settings}}
+                </section>
+
+                <section role="tabpanel" aria-hidden="true" class="tab-content" id="tab-productsByCategoryTabs-new-{{id}}" 
+                    data-emthemesmodez-products-by-category-tabs="{{concat url '?sort=newest'}}">
+                    {{> components/emthemes-modez/common/product-loading theme_settings=../../theme_settings}}
+                </section>
+
+                <section role="tabpanel" aria-hidden="true" class="tab-content" id="tab-productsByCategoryTabs-bestselling-{{id}}" 
+                    data-emthemesmodez-products-by-category-tabs="{{concat url '?sort=bestselling'}}">
+                    {{> components/emthemes-modez/common/product-loading theme_settings=../../theme_settings}}
+                </section>
+
+                <section role="tabpanel" aria-hidden="true" class="tab-content" id="tab-productsByCategoryTabs-reviews-{{id}}" 
+                    data-emthemesmodez-products-by-category-tabs="{{concat url '?sort=avgcustomerreview'}}">
+                    {{> components/emthemes-modez/common/product-loading theme_settings=../../theme_settings}}
+                </section>
+            </div>
+        </div>
+    {{/if}}
+{{/each}}
+

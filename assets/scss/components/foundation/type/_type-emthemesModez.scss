@@ -1,0 +1,44 @@
+body {
+	-webkit-font-smoothing: $font-smoothing;
+}
+
+[aria-selected],
+[aria-hidden] {
+	@include breakpoint("medium") {
+		outline: none;
+	}
+}
+
+
+h1.page-heading,
+.h1.page-heading {
+	font-size: fontSize("largest");
+	font-family: stencilFontFamily("headings-font");
+	font-weight: stencilFontWeight("headings-font");
+	margin-bottom: spacing("half");
+
+	@include breakpoint("medium") {
+		margin-bottom: spacing("single");
+		text-align: left;
+	}
+}
+
+.page-heading--mobileOnly {
+	@include breakpoint("medium") {
+		display: none;
+	}
+}
+
+.page-heading--desktopOnly {
+	display: none;
+
+	@include breakpoint("medium") {
+		display: block;
+	}
+}
+
+.emthemesModez-categoryPage-mainImage,
+.emthemesModez-brandPage-mainImage {
+	display: block;
+	margin: 0 auto spacing("single");
+}

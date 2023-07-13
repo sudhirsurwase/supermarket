@@ -1,0 +1,22 @@
+.actionBar-section {
+	float: right;
+
+	@include breakpoint("medium") {
+		margin-left: spacing("half");
+	}
+
+	.form-select {
+	    height: $input-height - remCalc($input-border-width * 2);
+	}
+}
+
+.actionBar-section--sort {
+	float: left;
+	margin-left: 0;
+}
+
+.actionBar-section--mode {
+	.form-option-variant {
+		min-width: fontSize("base") * lineHeight("base");
+	}
+}

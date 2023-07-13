@@ -1,0 +1,9 @@
+{{#if forms.search.query}}
+	{{#if banners.top}}
+        {{#each banners.top}}
+            {{#if (occurrences this ../forms.search.query) '>' 0}}
+                {{{this}}}
+            {{/if}}
+        {{/each}}
+	{{/if}}
+{{/if}}

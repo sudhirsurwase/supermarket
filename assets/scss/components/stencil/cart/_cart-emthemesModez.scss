@@ -1,0 +1,76 @@
+// =============================================================================
+// CART (CSS)
+// =============================================================================
+
+
+
+// Cart layout
+// -----------------------------------------------------------------------------
+
+.cart-header-item {
+    text-transform: uppercase;
+}
+
+// Cart content
+// -----------------------------------------------------------------------------
+
+.cart-item-figure {
+    position: relative;
+    padding-top: spacing("double") + spacing("base");
+    padding-bottom: spacing("single");
+    height: auto;
+}
+
+.cart-remove {
+    position: absolute;
+    top: spacing("single");
+    left: 0;
+    margin: 0;
+    background-color: transparent;
+    width: auto;
+    height: auto;
+}
+
+
+// Cart totals
+// -----------------------------------------------------------------------------
+
+.cart-total-value {
+    font-weight: fontWeight("bold");
+    color: stencilColor("color-textHeading");
+}
+
+.cart-total-grandTotal {
+    font-size: fontSize("larger");
+    color: stencilColor("color-textHeading");
+}
+
+
+// Cart actions
+// -----------------------------------------------------------------------------
+
+.cart-actions {
+    margin-bottom: spacing("base");
+    
+    @include breakpoint("small") {
+        margin-left: auto;
+        margin-right: 0;
+        width: grid-calc(9, $total-columns);
+    }
+
+    @include breakpoint("medium") {
+        width: grid-calc(7, $total-columns);
+    }
+
+    @include breakpoint("large") {
+        width: grid-calc(5, $total-columns);
+    }
+
+    .button {
+        display: block;
+        float: none;
+    }
+}
+
+
+// Cart Preview

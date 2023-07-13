@@ -1,0 +1,23 @@
+---
+blog:
+    recent_posts:
+        limit: {{theme_settings.footer_show_blog}}
+---
+{{#partial "page"}}
+
+<section class="page">
+
+	{{#if theme_settings.layout '===' 'left-sidebar'}}
+    <div class="page-sidebar">
+        {{> components/papa-supermarket/home/sidebar}}
+    </div>
+    {{/if}}
+    
+    <div class="page-content {{#if theme_settings.layout '!==' 'left-sidebar'}}page-content--centered{{/if}}">
+        <h1 class="page-heading">{{lang 'newsletter.unsubscribed_heading'}}</h1>
+        {{> components/common/alert-success (lang 'newsletter.unsubscribed_message' store_name=settings.store_name)}}
+    </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}

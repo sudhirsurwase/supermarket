@@ -1,0 +1,141 @@
+.heroCarousel {
+    margin-bottom: 0;
+    margin-top: 0;
+
+    @include breakpoint("medium") {
+        margin-bottom: spacing("half");
+    }
+
+    &.slick-initialized {
+        max-height: none;
+    }
+}
+
+.heroCarousel .slick-next, 
+.heroCarousel .slick-prev {
+    top: 50%;
+    display: none !important;
+
+    @include breakpoint("medium") {
+        display: block !important;
+    }
+}
+
+.heroCarousel .slick-dots li {
+    height: auto;
+    width: auto;
+    padding: remCalc(5px);
+
+    button {
+        background: $slick-dot-color;
+    }
+
+    button,
+    button::before {
+        @include square(6px);
+        border-radius: remCalc(3px);
+        transition: all 0.5s ease;
+    }
+
+    &.slick-active {
+        button,
+        button::before {
+            width: remCalc(15px);
+        }
+    }
+
+
+}
+
+.heroCarousel-image {
+    width: 100%;
+
+    @include breakpoint("medium") {
+        width: auto;
+    }
+}
+
+.heroCarousel-content {
+    @include breakpoint("medium") {
+        background-color: rgba($carousel-bgColor, stencilNumber("carousel-bgColor-opacity"));
+    }
+}
+
+.heroCarousel-video-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.heroCarousel-video {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 0;
+    padding-bottom: stencilString('carousel-video-ratio');
+    transform: translateY(-50%);
+
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+// 
+// Make position of carousel description text of each slide 
+// to left or right depends on theme settings
+// 
+@include breakpoint("medium") {
+    @for $i from 0 through 4 {
+        @if stencilString("carousel-slide" + #{$i} + "-position") == "left" {
+            .heroCarousel-slide--#{$i} .heroCarousel-content {
+                text-align: left;
+
+                @include breakpoint("medium") {
+                    left: auto;
+                    right: 50%;
+                    width: auto;
+                    max-width: 37.5%;
+                }
+            }
+        }
+        @else if stencilString("carousel-slide" + #{$i} + "-position") == "right" {
+            .heroCarousel-slide--#{$i} .heroCarousel-content {
+                text-align: right;
+
+                @include breakpoint("medium") {
+                    left: 50%;
+                    right: auto;
+                    width: auto;
+                    max-width: 37.5%;
+                }
+            }
+        }
+    }
+}
+
+
+.heroCarousel-title {
+    font-family: stencilFontFamily("logo-font");
+    font-weight: stencilFontWeight("logo-font");
+    font-size: fontSize("largest");
+    margin-bottom: 0;
+
+    @include breakpoint("medium") {
+        font-size: fontSize("hero");
+    }
+}
+
+.heroCarousel-description {
+    font-size: fontSize("base");
+    margin-bottom: spacing("half");
+
+    @include breakpoint("medium") {
+        font-size: 36px;
+        margin-bottom: 0;
+    }
+}

@@ -1,0 +1,28 @@
+
+
+@mixin u-emthemesModez-page-responsiveSidebar() {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+
+	.page-sidebar {
+		order: 2;
+	}
+
+	.page-content {
+		order: 1;
+	}
+
+	@include breakpoint("medium") {
+		display: block;
+	}
+}
+
+/**
+ * Display sidebar bellow main content on mobile/tablet mode
+ * 
+ * Example use: <div class="page u-emthemesModez-page-responsiveSidebar">
+ */
+.u-emthemesModez-page-responsiveSidebar {
+	@include u-emthemesModez-page-responsiveSidebar();
+}

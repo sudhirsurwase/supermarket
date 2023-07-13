@@ -1,0 +1,36 @@
+.productCarousel {
+	
+}
+
+.page-heading + .productCarousel {
+	.slick-prev,
+	.slick-next	{
+		$pd: spacing("half");
+		$h: remCalc(fontSize("small") * lineHeight("base")) + spacing("quarter") * 2; // same page-heading height
+
+		top: -(spacing("single") + $h);
+		margin: 0;
+		width: auto;
+		height: auto;
+		padding: $pd;
+
+		&:before {
+			width: $h - $pd * 2;
+			height: $h - $pd * 2;
+			margin: 0;
+		}
+	}
+
+	.slick-prev {
+		left: auto;
+		right: (spacing("half") + spacing("quarter") + spacing("quarter") * 2);
+	}
+	.slick-next	{
+		right: 0;
+	}
+}
+
+.productCarousel-slide {
+	padding: 0;
+}
+

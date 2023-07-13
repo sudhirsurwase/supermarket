@@ -1,0 +1,53 @@
+<section class="heroCarousel"
+    data-slick='{
+        "dots": true,
+        "mobileFirst": true,
+        "slidesToShow": 1,
+        "slidesToScroll": 1,
+        "autoplay": true,
+        "autoplaySpeed": {{carousel.swap_frequency}}
+    }'>
+    {{#each carousel.slides}}
+    <div class="heroCarousel-slide {{#if ../theme_settings.homepage_carousel_style '==' 'stretch'}}heroCarousel-slide--stretch{{/if}} heroCarousel-slide--{{@index}}"
+        style="background-image: url({{image}})">
+        <a href="{{url}}">
+            {{#if @index '==' 0}}
+                {{#if (merge this video=../../theme_settings.carousel_vid0)}}{{/if}}
+            {{/if}}
+            {{#if @index '==' 1}}
+                {{#if (merge this video=../../theme_settings.carousel_vid1)}}{{/if}}
+            {{/if}}
+            {{#if @index '==' 2}}
+                {{#if (merge this video=../../theme_settings.carousel_vid2)}}{{/if}}
+            {{/if}}
+            {{#if @index '==' 3}}
+                {{#if (merge this video=../../theme_settings.carousel_vid3)}}{{/if}}
+            {{/if}}
+            {{#if @index '==' 4}}
+                {{#if (merge this video=../../theme_settings.carousel_vid4)}}{{/if}}
+            {{/if}}
+
+            {{#if video}}
+                <div class="heroCarousel-video-wrapper">
+                    <img class="heroCarousel-image" src="{{image}}" alt="{{alt_text}}" title="{{alt_text}}" />
+                    <div class="heroCarousel-video"><div data-youtube="{{video}}"></div></div>
+                </div>
+            {{else}}
+                <img class="heroCarousel-image" src="{{image}}" alt="{{alt_text}}" title="{{alt_text}}" />
+            {{/if}}
+            
+            {{#if heading}}
+                {{> components/carousel-content show_background=true}}
+            {{else}}
+                {{#if text}}
+                    {{> components/carousel-content show_background=true}}
+                {{else}}
+                    {{#if button_text}}
+                        {{> components/carousel-content show_background=false}}
+                    {{/if}}
+                {{/if}}
+            {{/if}}
+        </a>
+    </div>
+    {{/each}}
+</section>

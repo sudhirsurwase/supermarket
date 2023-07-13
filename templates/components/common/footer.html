@@ -1,0 +1,161 @@
+
+{{#if banners.bottom}}
+<div class="container">
+    <div class="banners banners--bottom" data-banner-location="bottom">
+        <div class="banner">
+            {{{limit banners.bottom 1}}}
+        </div>
+    </div>
+</div>
+{{/if}}
+<footer class="footer" role="contentinfo">
+    <div class="emthemesModez-footer-topColumns-wrapper">
+        <div class="container">
+            <div class="emthemesModez-footer-topColumns">
+                
+
+                {{#if theme_settings.footer_show_newsletter}}
+                    <div class="emthemesModez-footer-newsletter">
+                        {{> components/emthemes-modez/newsletter/section}}
+                    </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container">
+        <section class="footer-info">
+
+            {{#if theme_settings.footer_show_aboutus}}
+                <article class="footer-info-col footer-info-col--about" data-section-type="storeInfo">
+                    <h5 class="footer-info-heading">
+                        <div class="footer-logo">
+                            <!--{{> components/common/store-logo}}-->
+                            
+                            <a href="http://www.thermoline.com.au/">
+        <img class="header-logo-image" src="//cdn10.bigcommerce.com/s-2h3cferpii/product_images/uploaded_images/logopng.png" alt="LabDirect - Lab Supplies Online" title="LabDirect - Lab Supplies Online">
+</a>
+                        </div>
+                    </h5>
+
+                    {{#if theme_settings.footer_show_contact}}
+                        <ul class="fa-ul">
+                            <li><i class="fa-li sl-icon-location-pin"></i><address>{{nl2br settings.address}}</address></li>
+                            {{#if settings.phone_number}}
+                            <li><i class="fa-li sl-icon-phone"></i>{{lang 'footer.call_us' phone_number=settings.phone_number}}</li>
+                            {{/if}}
+                        </ul>
+                    {{/if}}
+
+                    {{#if theme_settings.social_icon_placement_bottom}}
+                        {{> components/common/social-links style="alt"}}
+                    {{/if}}
+                </article>
+            {{/if}}
+            
+
+            {{#if theme_settings.footer_show_pages '>' -2}}
+                <article class="footer-info-col" data-section-type="footer-webPages">
+                    <h5 class="footer-info-heading">{{lang 'footer.navigate'}}</h5>
+                    <ul class="footer-info-list">
+                        {{#if theme_settings.footer_show_pages '>' -1}}
+                            {{#each (limit pages theme_settings.footer_show_pages)}}
+                                <li>
+                                    <a href="{{url}}">{{name}}</a>
+                                </li>
+                            {{/each}}
+                        {{else}}
+                            {{#each pages}}
+                                <li>
+                                    <a href="{{url}}">{{name}}</a>
+                                </li>
+                            {{/each}}
+                        {{/if}}
+                        <li>
+                            <a href="{{urls.sitemap}}">{{lang 'sitemap.page_title'}}</a>
+                        </li>
+                    </ul>
+                </article>
+            {{/if}}
+
+            {{#if theme_settings.footer_show_categories '>' -1}}
+                <article class="footer-info-col" data-section-type="footer-categories">
+                    <h5 class="footer-info-heading">{{lang 'footer.categories'}}</h5>
+                    <ul class="footer-info-list">
+                        {{#if theme_settings.footer_show_categories '>' 0}}
+                            {{#each (limit categories theme_settings.footer_show_categories)}}
+                                <li>
+                                    <a href="{{url}}">{{name}}</a>
+                                </li>
+                            {{/each}}
+                        {{else}}
+                            {{#each categories}}
+                                <li>
+                                    <a href="{{url}}">{{name}}</a>
+                                </li>
+                            {{/each}}
+                        {{/if}}
+                    </ul>
+                </article>
+            {{/if}}
+
+            {{#if theme_settings.footer_show_links_1}}
+                {{> components/emthemes-modez/common/footer-links index=1}}
+            {{/if}}
+
+            {{#if theme_settings.footer_show_links_2}}
+                {{> components/emthemes-modez/common/footer-links index=2}}
+            {{/if}}
+            
+            {{#if theme_settings.footer_show_links_3}}
+                {{> components/emthemes-modez/common/footer-links index=3}}
+            {{/if}}
+            
+            {{#if theme_settings.footer_show_links_4}}
+                {{> components/emthemes-modez/common/footer-links index=4}}
+            {{/if}}
+
+
+            {{#if theme_settings.footer_show_brands}}
+                <article class="footer-info-col footer-info-col--brands" data-section-type="footer-brands">
+                    <h5 class="footer-info-heading">{{lang 'footer.brands'}}</h5>
+                    <ul class="footer-info-list">
+                        {{#each shop_by_brand}}
+                            <li>
+                                <a href="{{url}}">{{name}}</a>
+                            </li>
+                        {{/each}}
+                        <li><a href="{{urls.brands}}">{{lang 'common.view_all'}}</a></li>
+                    </ul>
+                </article>
+            {{/if}}
+
+        </section>
+    </div>
+
+    <div class="footer-copyright">
+        <div class="container">
+            <p class="powered-by">
+                {{#if theme_settings.show_copyright_footer}}
+                    &copy; <span id="copyright_year"></span> {{settings.store_name}}.
+                    <script type="text/javascript">
+                        document.getElementById("copyright_year").innerHTML = new Date().getFullYear();
+                    </script>
+                {{/if}}
+                {{#if theme_settings.show_powered_by}}
+                    Powered by <a href="http://bigcommerce.com" rel="nofollow">BigCommerce</a>. Theme designed by <a href="https://papathemes.com" rel="nofollow">Papathemes</a>.
+                {{/if}}
+            </p>
+
+            {{> components/common/payment-icons}}
+
+            {{#if theme_settings.show_geotrust_ssl_seal}}
+                <div class="footer-geotrust-ssl-seal">
+                    {{> components/common/geotrust-ssl-seal}}
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</footer>

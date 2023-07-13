@@ -1,0 +1,35 @@
+---
+blog:
+    recent_posts:
+        limit: {{theme_settings.footer_show_blog}}
+---
+{{#partial "page"}}
+
+<section class="page">
+    
+    {{#if theme_settings.layout '===' 'left-sidebar'}}
+    <div class="page-sidebar">
+        {{> components/papa-supermarket/home/sidebar}}
+    </div>
+    {{/if}}
+
+    <div class="page-content {{#if theme_settings.layout '!==' 'left-sidebar'}}page-content--centered{{/if}}">
+        <h1 class="page-heading">
+            {{#if subscription.error}}
+                {{lang 'newsletter.subscribed_heading_error'}}
+            {{else}}
+                {{lang 'newsletter.subscribed_heading'}}
+            {{/if}}
+        </h1>
+
+        {{#if subscription.error}}
+            {{> components/common/alert-error subscription.error}}
+        {{else}}
+            {{> components/common/alert-success (lang 'newsletter.subscribed_message')}}
+        {{/if}}
+
+    </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}

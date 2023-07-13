@@ -1,0 +1,13 @@
+.tab-title {
+	font-weight: fontWeight("bold");
+
+	&:hover {
+		color: stencilColor("color-textSecondary");
+	}
+}
+
+.tabs--alt {
+	.tab-title {
+		text-transform: uppercase;
+	}
+}

@@ -1,0 +1,33 @@
+---
+products:
+    new:
+        limit: 5
+blog:
+    recent_posts:
+        limit: 10
+---
+{{#partial "page"}}
+
+<div class="page u-emthemesModez-page-responsiveSidebar">
+
+    <aside class="page-sidebar">
+        {{> components/emthemes-modez/blog/sidebar}}
+    </aside>
+
+    <main class="page-content">
+        <div class="page-content-header">
+            {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        </div>
+        <div class="page-content-body">
+            {{> components/blog/post post=blog.post show_tags=true}}
+
+    		<div class="emthemesModez-blog-bottomSection">
+            	{{> components/emthemes-modez/blog/featured posts=(limit blog.recent_posts 3)}}
+            </div>
+        </div>
+    </main>
+
+</div>
+
+{{/partial}}
+{{> layout/base}}

@@ -1,0 +1,228 @@
+// =============================================================================
+// HEADER (CSS)
+//
+// Custom header for theme emthemes-modez. Inherits css from the base theme.
+//
+// -----------------------------------------------------------------------------
+
+
+.header {
+    min-height: $header-height;
+    box-shadow: 0 1px 5px rgba(color("blacks"), 0.1);
+
+    @include breakpoint("medium") {
+        border-bottom: 0;
+        box-shadow: none;
+        z-index: auto;
+    }
+}
+
+.header-logo {
+    > a {
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: $header-height;
+
+        @at-root .header-logo--left > a {
+            justify-content: flex-start;
+        }
+
+        @at-root .header-logo--right > a {
+            justify-content: flex-end;
+        }
+
+        &:hover {
+            color: color("link", "text-hover");
+        }
+
+        &:active {
+            color: color("link", "text-active");
+        }
+    }
+
+    @include breakpoint("medium") {
+        margin-top: 0;
+        margin-bottom: 0;
+
+        > a {
+            display: inline;
+        }
+    }
+}
+
+.header-logo-text {
+    letter-spacing: letterSpacing("base");
+    margin: 0;
+}
+
+
+.mobileMenu-toggle {
+    .mobileMenu-toggleIcon,
+    .mobileMenu-toggleIcon::before,
+    .mobileMenu-toggleIcon::after {
+        background: stencilColor("navUser-color");
+    }
+
+    &.is-open .mobileMenu-toggleIcon {
+        // scss-lint:disable NestingDepth
+        &::before,
+        &::after {
+            background-color: stencilColor("navUser-color");
+        }
+    }
+}
+
+
+.emthemesModez-header-userSection .emthemesModez-quickSearch {
+    display: none;
+    
+    @include breakpoint("medium") {
+        display: block;
+    }
+}
+
+// ============================================================================
+// Top bar on the header
+// ============================================================================
+
+.emthemesModez-header-topSection {
+    background-color: stencilColor("topHeader-bgColor");
+    border-bottom: 1px solid stencilColor("topHeader-borderColor");
+    color: stencilColor("topHeader-color");
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &:before,
+    &:after {
+        display: none;
+    }
+
+    .navUser {
+        width: auto;
+        padding: 0;
+        z-index: auto;
+    }
+    
+    .navUser-action {
+        color: stencilColor("topHeader-color");
+        display: inline-flex;
+        padding: spacing("half");
+        align-items: center;
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: stencilColor("topHeader-color-hover");
+        }
+    }
+
+    .navUser-item-icon {
+        font-size: fontSize("base");
+        color: stencilColor("topHeader-icon-color");
+    }
+}
+
+
+
+// ============================================================================
+// Header variations (left, center, right)
+// ============================================================================
+
+.emthemesModez-header-userSection > .container,
+.emthemesModez-header-userSection > .container {
+    @include breakpoint("medium") {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: spacing("single") + spacing("half");
+        padding-bottom: spacing("single") + spacing("half");
+        transition: all 0.2s ease-in;
+
+        .navUser {
+            width: auto;
+        }
+
+        .header-logo {
+            min-width: 25%;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .emthemesModez-quickSearch {
+            order: 2;
+            flex: 1;
+        }
+    }
+}
+
+.emthemesModez-header-userSection.is-sticky > .container {
+    @include breakpoint("medium") {
+        padding-top: spacing("half");
+        padding-bottom: spacing("half");
+    }
+}
+
+.emthemesModez-header-userSection--logo-left > .container {
+    @include breakpoint("medium") {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .navUser {
+            order: 3;
+            padding-right: 0;
+        }
+
+        .header-logo {
+            order: 1;
+            padding-right: spacing("single");
+        }
+    }
+}
+
+.emthemesModez-header-userSection--logo-right > .container {
+    @include breakpoint("medium") {
+        .navUser {
+            order: 1;
+            padding-left: 0;
+        }
+
+        .header-logo {
+            order: 3;
+            padding-left: spacing("single");
+        }
+    }
+}
+
+
+.emthemesModez-header-userSection--logo-center > .container {
+    @include breakpoint("medium") {
+        .navUser {
+            order: 3;
+            flex: 1 0 width("3/12");
+            width: width("3/12");
+            padding-right: 0;
+            justify-content: flex-end;
+        }
+
+        .header-logo {
+            order: 2;
+            flex: 1 0 width("6/12");
+            width: width("6/12");
+            padding-left: spacing("single");
+            padding-right: spacing("single");
+        }
+
+        .emthemesModez-quickSearch {
+            order: 1;
+            flex: 1 0 width("3/12");
+            width: width("3/12");
+        }
+    }    
+}

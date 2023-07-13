@@ -1,0 +1,66 @@
+{{!--
+Arguments:
+    - id (number)
+    - name (string)
+    - url (string)
+    - style (string): CSS class styling suffix
+    - style2 (string): CSS class styling suffix
+
+
+Global variables:
+    - categories (array)
+
+--}}
+
+
+<div class="emthemesModez-productsByCategoryTabs emthemesModez-productsByCategoryTabs--sorting
+        {{#if style}}emthemesModez-productsByCategoryTabs--{{style}}{{/if}}
+        {{#if style2}}emthemesModez-productsByCategoryTabs--{{style2}}{{/if}}
+    ">
+    <ul class="tabs" data-tab data-tab-emthemesmodez-products-by-category-tabs role="tablist">
+        <li class="li-heading"><h2 class="page-heading"><a href="{{url}}">{{name}}</a></h2></li>
+        <li class="tab is-active" role="presentation"><a class="tab-title" href="#tab-productsByCategoryTabs-bestselling-{{id}}" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-productsByCategoryTabs-bestselling-{{id}}">{{lang 'papasupermarket.products_by_category_sorting_tabs.bestselling' }}</a></li>
+        <li class="tab" role="presentation"><a class="tab-title" href="#tab-productsByCategoryTabs-featured-{{id}}" role="tab" tabindex="0" aria-selected="false" aria-controls="tab-productsByCategoryTabs-featured-{{id}}">{{lang 'papasupermarket.products_by_category_sorting_tabs.featured' }}</a></li>
+        <li class="tab" role="presentation"><a class="tab-title" href="#tab-productsByCategoryTabs-new-{{id}}" role="tab" tabindex="0" aria-selected="false" aria-controls="tab-productsByCategoryTabs-new-{{id}}">{{lang 'papasupermarket.products_by_category_sorting_tabs.new' }}</a></li>
+        <li class="tab" role="presentation"><a class="tab-title" href="#tab-productsByCategoryTabs-reviews-{{id}}" role="tab" tabindex="0" aria-selected="false" aria-controls="tab-productsByCategoryTabs-reviews-{{id}}">{{lang 'papasupermarket.products_by_category_sorting_tabs.reviews' }}</a></li>
+    </ul>
+    {{#if children}}
+    <div class="emthemesModez-productsByCategoryTabs-details">
+        <div class="emthemesModez-productsByCategoryTabs-details-sub">
+            <h3 class="emthemesModez-productsByCategoryTabs-details-sub-heading">{{lang 'papasupermarket.products_by_category_sorting_tabs.subcategory_title'}}</h3>
+            <ul class="emthemesModez-productsByCategoryTabs-details-sub-list">
+            {{#each children}}
+                <li class="emthemesModez-productsByCategoryTabs-details-sub-item"><a href="{{url}}">{{name}}</a></li>
+            {{/each}}
+            </ul>
+        </div>
+    </div>
+    {{/if}}
+    <div class="tabs-contents">
+        <section role="tabpanel" aria-hidden="false" class="tab-content is-active" id="tab-productsByCategoryTabs-bestselling-{{id}}" 
+            data-emthemesmodez-products-by-category-tabs="{{concat url '?sort=bestselling'}}"
+            data-emthemesmodez-template="papa-supermarket/category/ajax-products-by-category-sorting-tabs-result">
+            {{> components/emthemes-modez/common/product-loading theme_settings=theme_settings}}
+        </section>
+
+        <section role="tabpanel" aria-hidden="true" class="tab-content" id="tab-productsByCategoryTabs-featured-{{id}}" 
+            data-emthemesmodez-products-by-category-tabs="{{concat url '?sort=featured'}}"
+            data-emthemesmodez-template="papa-supermarket/category/ajax-products-by-category-sorting-tabs-result">
+            {{> components/emthemes-modez/common/product-loading theme_settings=theme_settings}}
+        </section>
+
+        <section role="tabpanel" aria-hidden="true" class="tab-content" id="tab-productsByCategoryTabs-new-{{id}}" 
+            data-emthemesmodez-products-by-category-tabs="{{concat url '?sort=newest'}}"
+            data-emthemesmodez-template="papa-supermarket/category/ajax-products-by-category-sorting-tabs-result">
+            {{> components/emthemes-modez/common/product-loading theme_settings=theme_settings}}
+        </section>
+
+        <section role="tabpanel" aria-hidden="true" class="tab-content" id="tab-productsByCategoryTabs-reviews-{{id}}" 
+            data-emthemesmodez-products-by-category-tabs="{{concat url '?sort=avgcustomerreview'}}"
+            data-emthemesmodez-template="papa-supermarket/category/ajax-products-by-category-sorting-tabs-result">
+            {{> components/emthemes-modez/common/product-loading theme_settings=theme_settings}}
+        </section>
+    </div>
+</div>
+
+

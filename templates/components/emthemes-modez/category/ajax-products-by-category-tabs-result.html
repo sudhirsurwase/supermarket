@@ -1,0 +1,24 @@
+<div class="emthemesModez-productsByCategoryTabs-products">
+    <ul class="productGrid productGrid--maxCol6">
+        {{#if category.image}}
+            <li class="emthemesModez-productsByCategoryTabs-categoryImage">
+                <article class="card">
+                    <figure class="card-figure">
+                        <img src="{{getImage category.image 'zoom_size'}}" title="{{name}}" alt="{{name}}" />
+                    </figure>
+                </article>
+            </li>
+            {{#each (limit category.products 9)}}
+            <li class="product">
+                {{>components/products/card show_compare=false show_rating=../settings.show_product_rating theme_settings=../theme_settings customer=../customer}}
+            </li>
+            {{/each}}
+        {{else}}
+            {{#each (limit category.products 12)}}
+            <li class="product">
+                {{>components/products/card show_compare=false show_rating=../settings.show_product_rating theme_settings=../theme_settings customer=../customer}}
+            </li>
+            {{/each}}
+        {{/if}}
+    </ul>
+</div>

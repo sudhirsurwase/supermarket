@@ -1,0 +1,432 @@
+
+// Products grid in section Products By Category Sorting Tabs
+// ----------------------------------------------------------------------------
+// 
+// - 6 columns
+// - Category image takes 3 columns
+// - styling section heading
+// ----------------------------------------------------------------------------
+
+
+.emthemesModez-productsByCategoryTabs-heading {
+    font-size: fontSize("larger");
+    text-transform: uppercase;
+    border-bottom: 2px solid;
+    margin-bottom: spacing("single");
+    margin-top: 0;
+
+    a {
+        text-decoration: none;
+        display: inline-block;
+        // padding: spacing("quarter") (spacing("half") + spacing("quarter")) (spacing("quarter") - remCalc(2px));
+        padding: spacing("half") (spacing("half") + spacing("quarter")) spacing("half");
+
+    }
+}
+
+
+.emthemesModez-productsByCategoryTabs {
+    .li-heading {
+        list-style: none;
+    }
+
+    .tab {
+        display: none;
+    }
+
+    @include breakpoint("medium") {
+        .tabs {
+            border-bottom: {
+                width: 2px;
+                style: solid;
+            }
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tab {
+            border: 0;
+            margin: 0;
+            display: block;
+        }
+
+        .li-heading {
+            margin-left: 0;
+            margin-right: spacing("single");
+        }
+
+        .tab--link {
+            margin-left: auto;
+
+            a {
+                padding-right: 0;
+            }
+        }
+        .tab-title {
+            padding: spacing("quarter") spacing("single");
+        }
+    }
+
+    
+    .page-heading {
+        font-size: fontSize("small");
+        text-transform: uppercase;
+        margin: 0;
+        text-align: left;
+
+        @include breakpoint("medium") {
+            font-size: fontSize("larger");
+        }
+
+        a,
+        > span {
+            text-decoration: none;
+            display: inline-block;
+            // padding: spacing("quarter") (spacing("half") + spacing("quarter")) (spacing("quarter") - remCalc(2px));
+            padding: spacing("quarter") spacing("single");
+
+            @include breakpoint("medium") {
+                padding-top: spacing("half");
+                padding-bottom: spacing("half");
+            }
+
+        }
+    }
+}
+
+
+
+
+.emthemesModez-productsByCategoryTabs-categoryImage {
+    @include grid-column(12, $float: none);
+
+    display: flex;
+    flex-direction: column;
+
+    .productGrid & {
+        .card {
+            flex: 1;
+            padding: spacing("half");
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-figure {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    }
+
+
+    @include breakpoint("medium") {
+        img {
+            position: absolute;
+            min-width: 100%;
+        }
+
+        .productGrid--maxCol6 & {
+            width: grid-calc(3, 6);
+        }
+    }
+}
+
+
+
+
+// Variation #1
+// ----------------------------------------------------------------------------
+//
+// - No spacing between items.
+// ---------------------------------------------------------------------------- 
+
+
+.emthemesModez-productsByCategoryTabs--style1 {
+
+    .productGrid {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .card {
+        margin-bottom: 0;
+    }
+
+    .csscolumns &,
+    .no-csscolumns & {
+        .productGrid .product {
+            padding: 0;
+        }
+    }
+
+    .emthemesModez-productsByCategoryTabs-categoryImage {
+        padding: 0;
+        
+        .card {
+            padding: 0;
+        }   
+    }    
+    
+    .productGrid--maxCol6 {
+        .emthemesModez-productsByCategoryTabs-categoryImage ~ .product {
+            
+            .card {
+                border-top: 0;
+                border-left: 0;
+            }
+            
+            &:nth-child(2),
+            &:nth-child(3),
+            &:nth-child(4) {
+                .card {
+                    border-top: container("border");
+                }
+            }
+        }
+    }
+}
+
+
+// Variation 'supermarket1'
+// ----------------------------------------------------------------------------
+// 
+// - For theme Supermarket
+// ---------------------------------------------------------------------------- 
+
+.emthemesModez-productsByCategoryTabs--supermarket1 {
+
+    .tabs {
+        margin-left: -$container-padding;
+        margin-right: -$container-padding;
+    }
+
+    @include breakpoint("medium") {
+        .tabs {
+            border-bottom-width: 1px;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .li-heading {
+            margin-right: auto;
+        }
+
+        .tab {
+            border: 2px solid transparent;
+            border-radius: remCalc(16px);
+        }
+
+        .tab.is-active {
+            border-color: container("borderColor");
+        }
+    }
+
+    .page-heading {
+        a,
+        > span {
+            border-bottom: 2px solid transparent;
+
+            @include breakpoint("medium") {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+    }
+
+    .emthemesModez-productsByCategoryTabs-details {
+        margin-left: -$container-padding;
+        margin-right: -$container-padding;
+
+        @include breakpoint("medium") {
+            margin-top: spacing("single") + spacing("quarter");
+            margin-left: 0;
+            margin-right: 0;
+            display: flex;
+            float: right;
+            width: width("2/12");
+
+            + .tabs-contents {
+                margin-right: width("2/12");
+                width: width("10/12");
+            }
+        }
+    }
+
+    .emthemesModez-productsByCategoryTabs-details-image {
+        @include breakpoint("medium") {
+            flex: 1 0 width("10/12");
+        }
+    }
+
+    .emthemesModez-productsByCategoryTabs-details-sub {
+        @include breakpoint("medium") {
+            flex: 1 0 width("2/12");
+        }
+    }
+
+    .emthemesModez-productsByCategoryTabs-details-sub-heading {
+        font-size: fontSize("small");
+        text-transform: uppercase;
+        padding: spacing("half") spacing("single");
+        margin: 0;
+        background-color: container("fill", "dark");
+        display: none;
+
+        @include breakpoint("medium") {
+            display: block;
+        }
+    }
+
+    .emthemesModez-productsByCategoryTabs-details-sub-list {
+        margin: 0;
+        list-style-type: none;
+        padding: 0;
+
+        @include breakpoint("medium") {
+            padding: spacing("third") 0;
+        }
+    }
+
+    .emthemesModez-productsByCategoryTabs-details-sub-item {
+        padding: spacing("third") spacing("single") + spacing("base") spacing("third") spacing("single");
+        border-bottom: container("border");
+        position: relative;
+
+        @include breakpoint("medium") {
+            padding: spacing("third") spacing("single") spacing("third") (spacing("single") + spacing("base"));
+            border-bottom: 0;
+        }
+
+        &:before {
+            content: '\f105';
+            font-family: FontAwesome;
+            line-height: fontSize("base") * lineHeight("base");
+            position: absolute;
+            right: spacing("single");
+
+            @include breakpoint("medium") {
+                right: auto;
+                left: spacing("single");
+            }
+        }
+
+        a {
+            text-decoration: none;
+        }
+    }
+
+    .tabs-contents {
+        margin: spacing("single") 0 0;
+    }
+
+    .tab-content {
+        padding: 0;
+    }
+
+    .emthemesModez-productLoading {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .productGrid {
+        margin-bottom: -(spacing("double"));
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .csscolumns & .productGrid--maxCol5 .product,
+    .csscolumns & .productGrid--maxCol6 .product {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .productCarousel .card, 
+    .productGrid .card {
+        border-color: transparent;
+    }
+}
+
+
+
+
+
+@mixin emthemesModez-productsByCategoryTabs-type($cssPrefix, $name) {
+
+    .emthemesModez-productsByCategoryTabs-#{$cssPrefix}-heading--instance1 {
+        border-color: stencilColor(#{$name} + '-heading-backgroundColor1');
+
+        a {
+            color: stencilColor(#{$name} + '-heading-color1');
+            background: stencilColor(#{$name} + '-heading-backgroundColor1');
+        }
+    }
+
+    .emthemesModez-productsByCategoryTabs-#{$cssPrefix}-heading--instance2 {
+        border-color: stencilColor(#{$name} + '-heading-backgroundColor2');
+
+        a {
+            color: stencilColor(#{$name} + '-heading-color2');
+            background: stencilColor(#{$name} + '-heading-backgroundColor2');
+        }
+    }
+
+    .emthemesModez-productsByCategoryTabs-#{$cssPrefix}-heading--instance3 {
+        border-color: stencilColor(#{$name} + '-heading-backgroundColor3');
+
+        a {
+            color: stencilColor(#{$name} + '-heading-color3');
+            background: stencilColor(#{$name} + '-heading-backgroundColor3');
+        }
+    }
+
+    @for $i from 1 through 3 {
+        .emthemesModez-productsByCategoryTabs--#{$cssPrefix}.emthemesModez-productsByCategoryTabs--instance#{$i} {
+
+            .tabs {
+                border-bottom-color: stencilColor(#{$name} + '-heading-backgroundColor' + #{$i});
+            }
+
+            .page-heading {
+                border-color: stencilColor(#{$name} + '-heading-backgroundColor' + #{$i});
+
+                a,
+                > span {
+                    color: stencilColor("color-textHeading");
+                    background: stencilColor(#{$name} + '-heading-backgroundColor' + #{$i});
+                }
+            }
+
+            // Variation 'supermarket1'
+            // ----------------------------------------------------------------
+            &.emthemesModez-productsByCategoryTabs--supermarket1 {
+                .tabs {
+                    border-bottom-color: container("borderColor");
+                }
+
+                .page-heading {
+                    a,
+                    > span {
+                        background: none;
+                        border-bottom-color: stencilColor(#{$name} + '-heading-backgroundColor' + #{$i});
+                    }
+                }
+
+                .emthemesModez-productsByCategoryTabs-details-sub-heading {
+                    color: stencilColor(#{$name} + '-heading-color' + #{$i});
+                    background-color: stencilColor(#{$name} + '-heading-backgroundColor' + #{$i});
+                }
+
+                @include breakpoint("medium") {
+                    .tab.is-active {
+                        border-color: stencilColor(#{$name} + '-heading-backgroundColor' + #{$i});
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+

@@ -1,0 +1,25 @@
+.papaSupermarket-specialProductsColumns {
+	@include u-listBullets("none");
+	@include grid-row($behavior: "nest");
+	font-size: 0; // 1
+}
+
+.papaSupermarket-specialProductsColumns-column {
+	@include grid-column(12, $float: none);
+    font-size: fontSize("base"); // 1
+    vertical-align: top;
+    display: inline-block;
+    position: relative;
+
+    @include breakpoint("medium") {
+    	width: grid-calc(4, $total-columns);
+    }
+
+    .page-heading {
+    	@extend %emthemesModez-section-page-heading;
+
+    	&:after {
+    		width: calc(100% - #{$column-gutter});
+    	}
+    }
+}

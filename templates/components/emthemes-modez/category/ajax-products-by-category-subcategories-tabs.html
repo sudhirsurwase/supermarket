@@ -1,0 +1,63 @@
+{{!--
+Arguments:
+    - category_id (number) (optional): if no provided, root category is used
+    - style (string): CSS class styling suffix
+    - style2 (string): CSS class styling suffix
+
+
+Global variables:
+    - categories (array)
+
+--}}
+
+{{#if category_id '!=' 0}}
+    {{#each categories}}
+        {{#if id '==' ../category_id}}
+            <div class="emthemesModez-productsByCategoryTabs emthemesModez-productsByCategoryTabs--subcategories
+                    {{#if ../../style}}emthemesModez-productsByCategoryTabs--{{../../../style}}{{/if}}
+                    {{#if ../../style2}}emthemesModez-productsByCategoryTabs--{{../../../style2}}{{/if}}
+                ">
+                <ul class="tabs" data-tab data-tab-emthemesmodez-products-by-category-tabs role="tablist">
+                    <li class="li-heading"><h2 class="page-heading"><a href="{{url}}">{{name}}</a></h2></li>
+                    
+                    {{#each children}}
+                    <li class="tab {{#if @index '==' 0}}is-active{{/if}}" role="presentation"><a class="tab-title" href="#tab-productsByCategoryTabs-{{id}}" role="tab" tabindex="0" aria-selected="{{#if @index '==' 0}}true{{else}}false{{/if}}" aria-controls="tab-productsByCategoryTabs-{{id}}">{{name}}</a></li>
+                    {{/each}}
+
+                    <li class="tab tab--link" role="presentation"><span><a class="tab-title" href="{{url}}" role="tab" tabindex="0" aria-selected="false">{{lang 'emthemesmodez.products_by_category_subcategories_tabs.view_all'}}</a></span></li>
+                </ul>
+                <div class="tabs-contents">
+                    {{#each children}}
+                    <section role="tabpanel" aria-hidden="{{#if @index '==' 0}}false{{else}}true{{/if}}" class="tab-content {{#if @index '==' 0}}is-active{{/if}}" id="tab-productsByCategoryTabs-{{id}}" 
+                        data-emthemesmodez-products-by-category-tabs="{{url}}">
+                        {{> components/emthemes-modez/common/product-loading theme_settings=../../../theme_settings}}
+                    </section>
+                    {{/each}}
+                </div>
+            </div>
+        {{/if}}
+    {{/each}}
+{{else}}
+    <div class="emthemesModez-productsByCategoryTabs emthemesModez-productsByCategoryTabs--subcategories
+            {{#if style}}emthemesModez-productsByCategoryTabs--{{style}}{{/if}}
+            {{#if style2}}emthemesModez-productsByCategoryTabs--{{style2}}{{/if}}
+        ">
+        <ul class="tabs" data-tab data-tab-emthemesmodez-products-by-category-tabs role="tablist">
+            <li class="li-heading"><h2 class="page-heading"><span>Categories</span></h2></li>
+            
+            {{#each categories}}
+            <li class="tab {{#if @index '==' 0}}is-active{{/if}}" role="presentation"><a class="tab-title" href="#tab-productsByCategoryTabs-{{id}}" role="tab" tabindex="0" aria-selected="{{#if @index '==' 0}}true{{else}}false{{/if}}" aria-controls="tab-productsByCategoryTabs-{{id}}">{{name}}</a></li>
+            {{/each}}
+
+            <li class="tab tab--link" role="presentation"><span><a class="tab-title" href="#" role="tab" tabindex="0" aria-selected="false">{{lang 'emthemesmodez.products_by_category_subcategories_tabs.view_all'}}</a></span></li>
+        </ul>
+        <div class="tabs-contents">
+            {{#each categories}}
+            <section role="tabpanel" aria-hidden="{{#if @index '==' 0}}false{{else}}true{{/if}}" class="tab-content {{#if @index '==' 0}}is-active{{/if}}" id="tab-productsByCategoryTabs-{{id}}" 
+                data-emthemesmodez-products-by-category-tabs="{{url}}">
+                {{> components/emthemes-modez/common/product-loading theme_settings=../theme_settings}}
+            </section>
+            {{/each}}
+        </div>
+    </div>
+{{/if}}

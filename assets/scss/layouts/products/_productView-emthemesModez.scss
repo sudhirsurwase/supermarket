@@ -1,0 +1,25 @@
+// Product view layout
+// -----------------------------------------------------------------------------
+
+.productView {
+	display: flex;
+	flex-direction: column;
+
+	@include breakpoint("medium") {
+		display: block;
+	}
+}
+
+.productView-details {
+	order: 2;
+}
+
+.productView-images {
+	order: 1;
+	position: relative;
+}
+
+.productView-description {
+	order: 3;
+}
+

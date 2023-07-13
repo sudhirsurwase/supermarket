@@ -1,0 +1,67 @@
+.socialLinks {
+	font-size: 0;
+
+	.socialLinks-item {
+		margin: 0 spacing("quarter") 0 0;
+
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+	.icon {
+		width: spacing("quarter") * 2 + lineHeight("base") * fontSize("base");
+		height: spacing("quarter") * 2 + lineHeight("base") * fontSize("base");
+		padding: spacing("third");
+		background-color: stencilColor('icon-backgroundColor');
+
+		&:hover,
+		&:focus {
+			background-color: stencilColor('icon-backgroundColor-hover');
+
+		}
+	}
+
+	.icon--google_plusone {
+		padding-top: 0;
+		padding-bottom: 0;
+		display: inline-flex !important;
+		align-items: center;
+		width: 52px !important;
+	}
+}
+
+.socialLinks--dark {
+	.socialLinks-item {
+		margin: 0;
+	}
+	
+	.icon {
+		background-color: stencilColor('icon-backgroundColor-hover');
+
+		&:hover,
+		&:focus {
+			background-color: stencilColor('icon-backgroundColor');
+
+		}
+	}
+}
+
+
+.socialLinks--alt {
+	.icon {
+		background-color: stencilColor('icon--alt-backgroundColor');
+
+		svg {
+			fill: stencilColor("icon--alt-color");
+		}
+
+		&:hover,
+		&:focus {
+			background-color: stencilColor('icon--alt-backgroundColor-hover');
+
+			svg {
+				fill: stencilColor("icon--alt-color-hover");
+			}
+		}
+	}
+}

@@ -1,0 +1,10 @@
+<div class="emthemesModez-productsByCategory-products">
+	<ul class="productGrid productGrid--maxCol5">
+		<li class="emthemesModez-productsByCategory-categoryImage"><img src="{{#if category.image}}{{getImage category.image 'zoom_size'}}{{else}}{{lang 'emthemesmodez.products_by_category.noimage'}}{{/if}}" alt="{{category.name}}" /></li>
+	    {{#each (limit category.products 6)}}
+	    <li class="product">
+	        {{>components/products/card show_compare=false show_rating=../settings.show_product_rating theme_settings=../theme_settings customer=../customer}}
+	    </li>
+	    {{/each}}
+	</ul>
+</div>

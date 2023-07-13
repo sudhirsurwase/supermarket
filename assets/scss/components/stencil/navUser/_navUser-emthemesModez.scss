@@ -1,0 +1,159 @@
+
+@include breakpoint("medium") {
+	.navUser {
+		display: flex;
+		align-items: center;
+		position: static;
+	}
+
+	.navUser-section {
+		display: flex;
+		align-items: center;
+	}
+}
+
+
+.navUser-action {
+	font-weight: inherit;
+	text-transform: none;
+	vertical-align: middle;
+	padding: 0 spacing("single") 0 0;
+
+	@include breakpoint("medium") {
+		padding-right: spacing("single");
+
+		.navUser-item:last-child & {
+			padding-right: 0;
+		}
+	}
+
+	> * {
+		vertical-align: baseline;
+	}
+
+	.icon {
+		margin-left: spacing("half");
+	}
+}
+
+
+.navUser-or {
+	vertical-align: middle;
+}
+
+
+.navUser-item--compare.show {
+	@include breakpoint("medium") {
+		position: fixed;
+		bottom: 0;
+		right: 0;
+		background: $header-bg;
+		padding: container("padding");
+	}
+}
+
+
+.navUser-item--account {
+    .navUser-action:first-child {
+        padding-right: spacing("half");
+    }
+}
+.navUser-item-icon {
+	font-size: remCalc(20px);
+	display: inline-block;
+	padding-right: spacing("half");
+
+	&:before {
+		vertical-align: middle;
+	}
+}
+
+.countPill {
+	background-color: stencilColor("navUser-indicator-backgroundColor");
+	font-size: fontSize("smallest");
+	font-weight: stencilFontWeight("headings-font");
+	margin-left: -(spacing("half"));
+	vertical-align: text-bottom;
+
+	@include breakpoint("small") {
+		margin-left: spacing("quarter");
+	}
+}
+
+.navUser-item--cart .navUser-action {
+	position: relative;
+}
+
+
+.navUser-item-searchLabel,
+.navUser-item-giftCertLabel,
+.navUser-item-cartLabel {
+	
+}
+
+.dropdown--quickSearch {
+	background-color: container("fill");
+
+	&.is-open {
+		margin-top: spacing("double");
+
+		+ .emthemesModez-overlay {
+			display: block;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: rgba(0, 0, 0, 0.5);
+			z-index: zIndex("high") - 5;
+		}
+	}
+
+	.modal-close {
+		color: $color-textSecondary;
+	}
+}
+
+
+
+// ============================================================================
+// Store info (email, address, phone...) on the top header section
+// ============================================================================
+.navUser--storeInfo {
+	.navUser-item {
+		color: stencilColor("navUser-color");
+		margin-left: spacing("single") * 3;
+
+		&:first-child {
+			margin-left: 0;
+		}
+	}
+
+	// Icons
+	[class^="emthemesModez-icon-"],
+	[class*=" emthemesModez-icon-"] {
+		font-size: fontSize("base") * (18/14);
+		color: stencilColor("icon--alt-color");
+		padding-right: spacing("half");
+		vertical-align: middle;
+
+		&:hover,
+		&:focus {
+			color: stencilColor("icon--alt-color-hover");
+		}
+	}
+}
+
+// ----------------------------------------------------------------------------
+// Currency select on header
+// ----------------------------------------------------------------------------
+
+.emthemesModez-currency-label {
+	display: none;
+
+	@include breakpoint("large") {
+		display: inline;
+	}
+}
+
+

@@ -1,0 +1,107 @@
+// COMMON SECTIONS
+// ============================================================================
+
+%emthemesModez-section-page-heading {
+	font-size: fontSize("small");
+	text-transform: uppercase;
+	padding: spacing("quarter") spacing("single");
+	display: block;
+	text-align: left;
+	background: container("fill", "dark");
+	margin: 0 (-$container-padding) spacing("single");
+
+	@include breakpoint("medium") {
+		font-size: fontSize("larger");
+		padding: spacing("half") 0;
+		display: inline-block;
+		border-bottom: 2px solid color("primary");
+		text-align: center;
+		background: none;
+		margin: 0 0 spacing("double");
+
+		&:after {
+			content: ' ';
+			display: block;
+			font-size: 0;
+			height: 0;
+			border-top: container("border");
+			position: absolute;
+			width: 100%;
+			margin-top: spacing("half") + remCalc(2px);
+		}
+	}
+}
+
+.emthemesModez-section {
+	padding: spacing("single") 0;
+}
+
+.emthemesModez-section-inner {
+	position: relative;
+
+	> .page-heading {
+		@extend %emthemesModez-section-page-heading;
+	}
+}
+
+.emthemesModez-section--alt {
+	background-color: container("fill", "dark");
+
+	@include breakpoint("medium") {
+		width: 100vw;
+		margin-left: 50%;
+		transform: translateX(-50%);
+	}
+
+	.emthemesModez-section-inner {
+		@extend %emthemesModez-container;
+	}
+}
+
+
+
+// SECTION 1
+// ============================================================================
+.container--emthemesModez-section1-fullwidth.container {
+	padding: 0;
+	margin: 0;
+	max-width: none;
+}
+
+.emthemesModez-section1 {
+	margin-top: 0;
+
+    @include breakpoint("medium") {
+        background: stencilColor("navPages-subMenu-backgroundColor");
+    }
+}
+
+.emthemesModez-section1--fullwidth {
+	width: 100%;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.emthemesModez-section1-socials {
+	display: none;
+}
+
+.emthemesModez-section1-top {
+	@include breakpoint("medium") {
+		display: flex;
+		align-items: center;
+		padding: spacing("quarter") 0;
+		background: $body-bg;
+
+		.emthemesModez-section1-hotNews {
+			flex: 1;
+		}
+
+		.emthemesModez-section1-socials {
+			display: block;
+			flex: 0;
+			white-space: nowrap;
+			padding-left: spacing("single");
+		}
+	}
+}

@@ -1,0 +1,17 @@
+.breadcrumbs {
+	text-align: center;
+
+	@include breakpoint("medium") {
+		text-align: left;
+		margin-top: 0;
+
+		.page-content--centered &,
+		.page-sidebar + .page-content & {
+			margin-top: spacing("quarter");
+		}
+	}
+}
+.breadcrumb {
+	text-transform: uppercase;
+	
+}

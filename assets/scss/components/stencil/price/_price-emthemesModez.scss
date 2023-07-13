@@ -1,0 +1,28 @@
+// =============================================================================
+// PRICE (CSS)
+// =============================================================================
+
+
+.price-section {
+	color: $color-textSecondary;
+
+	> * {
+		vertical-align: middle;
+	}
+
+	.price {
+		color: stencilColor("color-price");
+	}
+
+	.price--rrp,
+	.price--discounted {
+	    color: $color-textSecondary;
+	    font-weight: fontWeight("thin");
+	}
+}
+
+.price-section--saving {
+	.price {
+		color: $color-textSecondary;
+	}
+}
